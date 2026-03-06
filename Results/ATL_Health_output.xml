@@ -1,0 +1,2277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.9.12 on darwin)" generated="20250411 17:15:46.067" rpa="false" schemaversion="3">
+<suite id="s1" name="ATL Logging" source="/Users/cdhingra/PycharmProjects/sre_qa_jenkins_framework/Tests/ATL_Logging.robot">
+<test id="s1-t1" name="XEPA Services Check for ATL" line="24">
+<kw name="XEPA Services Check" library="Health_Check">
+<arg>${ATL}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${users_json_path}</var>
+<arg>${EXECDIR}/${Common_Path}/${site}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250411 17:15:46.902" level="INFO">${users_json_path} = /Users/cdhingra/PycharmProjects/sre_qa_jenkins_framework/Data/ATL01_Site_Package.json</msg>
+<status status="PASS" starttime="20250411 17:15:46.902" endtime="20250411 17:15:46.902"/>
+</kw>
+<kw name="Get File" library="OperatingSystem">
+<var>${the file as string}</var>
+<arg>${users_json_path}</arg>
+<doc>Returns the contents of a specified file.</doc>
+<msg timestamp="20250411 17:15:46.902" level="INFO" html="true">Getting file '&lt;a href="file:///Users/cdhingra/PycharmProjects/sre_qa_jenkins_framework/Data/ATL01_Site_Package.json"&gt;/Users/cdhingra/PycharmProjects/sre_qa_jenkins_framework/Data/ATL01_Site_Package.json&lt;/a&gt;'.</msg>
+<msg timestamp="20250411 17:15:46.903" level="INFO">${the file as string} = {
+  "primary_test_model": "ATL01 DE Sites Health Check Testing",
+  "DE Site": {
+    "ABR": {
+      "ABR-ATL01-01": {
+        "ABR-IP": "172.24.40.16",
+        "username": "root",
+        "password1": ...</msg>
+<status status="PASS" starttime="20250411 17:15:46.902" endtime="20250411 17:15:46.903"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${parsed}</var>
+<arg>json.loads("""${the file as string}""")</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20250411 17:15:46.903" level="INFO">${parsed} = {'primary_test_model': 'ATL01 DE Sites Health Check Testing', 'DE Site': {'ABR': {'ABR-ATL01-01': {'ABR-IP': '172.24.40.16', 'username': 'root', 'password1': 'crypt:x2wZAKB5prcln1gNrOA7HE5+xtEFE2HzM0G...</msg>
+<status status="PASS" starttime="20250411 17:15:46.903" endtime="20250411 17:15:46.903"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${properties}</var>
+<arg>${parsed["DE Site"]["XEPA"]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250411 17:15:46.904" level="INFO">${properties} = {'XEPA-ATL01-01': {'ip': '172.24.40.28', 'username': 'root', 'password1': 'crypt:x2wZAKB5prcln1gNrOA7HE5+xtEFE2HzM0G6ue9Sw2eC1dKtzKsZ1apSauCXbkF/TsC8hx9oYiiojhf+VA=='}}</msg>
+<status status="PASS" starttime="20250411 17:15:46.903" endtime="20250411 17:15:46.904"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${properties}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:15:46.905" level="INFO">{'XEPA-ATL01-01': {'ip': '172.24.40.28', 'username': 'root', 'password1': 'crypt:x2wZAKB5prcln1gNrOA7HE5+xtEFE2HzM0G6ue9Sw2eC1dKtzKsZ1apSauCXbkF/TsC8hx9oYiiojhf+VA=='}}</msg>
+<status status="PASS" starttime="20250411 17:15:46.904" endtime="20250411 17:15:46.905"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${properties1}</var>
+<arg>${parsed["DE Site"]["ABR"]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250411 17:15:46.906" level="INFO">${properties1} = {'ABR-ATL01-01': {'ABR-IP': '172.24.40.16', 'username': 'root', 'password1': 'crypt:x2wZAKB5prcln1gNrOA7HE5+xtEFE2HzM0G6ue9Sw2eC1dKtzKsZ1apSauCXbkF/TsC8hx9oYiiojhf+VA=='}, 'ABR-ATL01-02': {'ABR-IP': '...</msg>
+<status status="PASS" starttime="20250411 17:15:46.905" endtime="20250411 17:15:46.906"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${properties1}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:15:46.906" level="INFO">{'ABR-ATL01-01': {'ABR-IP': '172.24.40.16', 'username': 'root', 'password1': 'crypt:x2wZAKB5prcln1gNrOA7HE5+xtEFE2HzM0G6ue9Sw2eC1dKtzKsZ1apSauCXbkF/TsC8hx9oYiiojhf+VA=='}, 'ABR-ATL01-02': {'ABR-IP': '172.24.40.17', 'username': 'root', 'password1': 'crypt:x2wZAKB5prcln1gNrOA7HE5+xtEFE2HzM0G6ue9Sw2eC1dKtzKsZ1apSauCXbkF/TsC8hx9oYiiojhf+VA=='}}</msg>
+<status status="PASS" starttime="20250411 17:15:46.906" endtime="20250411 17:15:46.906"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>@{Failed_XEPAs}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20250411 17:15:46.906" level="INFO">@{Failed_XEPAs} = [ ]</msg>
+<status status="PASS" starttime="20250411 17:15:46.906" endtime="20250411 17:15:46.906"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>@{Passed_XEPAs}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20250411 17:15:46.906" level="INFO">@{Passed_XEPAs} = [ ]</msg>
+<status status="PASS" starttime="20250411 17:15:46.906" endtime="20250411 17:15:46.906"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${check_status}</arg>
+<arg>${0}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20250411 17:15:46.909" level="INFO">${check_status} = 0</msg>
+<status status="PASS" starttime="20250411 17:15:46.906" endtime="20250411 17:15:46.910"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${fail}</arg>
+<arg>${0}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20250411 17:15:46.912" level="INFO">${fail} = 0</msg>
+<status status="PASS" starttime="20250411 17:15:46.910" endtime="20250411 17:15:46.912"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${pass}</arg>
+<arg>${0}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20250411 17:15:46.915" level="INFO">${pass} = 0</msg>
+<status status="PASS" starttime="20250411 17:15:46.913" endtime="20250411 17:15:46.916"/>
+</kw>
+<for flavor="IN">
+<var>${key1}</var>
+<value>@{properties}</value>
+<iter>
+<var name="${key1}">XEPA-ATL01-01</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${sub dict}</var>
+<arg>${properties}</arg>
+<arg>${key1}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20250411 17:15:46.916" level="INFO">${sub dict} = {'ip': '172.24.40.28', 'username': 'root', 'password1': 'crypt:x2wZAKB5prcln1gNrOA7HE5+xtEFE2HzM0G6ue9Sw2eC1dKtzKsZ1apSauCXbkF/TsC8hx9oYiiojhf+VA=='}</msg>
+<status status="PASS" starttime="20250411 17:15:46.916" endtime="20250411 17:15:46.916"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${sub dict}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:15:46.916" level="INFO">{'ip': '172.24.40.28', 'username': 'root', 'password1': 'crypt:x2wZAKB5prcln1gNrOA7HE5+xtEFE2HzM0G6ue9Sw2eC1dKtzKsZ1apSauCXbkF/TsC8hx9oYiiojhf+VA=='}</msg>
+<status status="PASS" starttime="20250411 17:15:46.916" endtime="20250411 17:15:46.916"/>
+</kw>
+<for flavor="IN">
+<var>${key}</var>
+<value>@{properties1}</value>
+<iter>
+<var name="${key}">ABR-ATL01-01</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${sub dict1}</var>
+<arg>${properties1}</arg>
+<arg>${key}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20250411 17:15:46.916" level="INFO">${sub dict1} = {'ABR-IP': '172.24.40.16', 'username': 'root', 'password1': 'crypt:x2wZAKB5prcln1gNrOA7HE5+xtEFE2HzM0G6ue9Sw2eC1dKtzKsZ1apSauCXbkF/TsC8hx9oYiiojhf+VA=='}</msg>
+<status status="PASS" starttime="20250411 17:15:46.916" endtime="20250411 17:15:46.916"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${sub dict1}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:15:46.916" level="INFO">{'ABR-IP': '172.24.40.16', 'username': 'root', 'password1': 'crypt:x2wZAKB5prcln1gNrOA7HE5+xtEFE2HzM0G6ue9Sw2eC1dKtzKsZ1apSauCXbkF/TsC8hx9oYiiojhf+VA=='}</msg>
+<status status="PASS" starttime="20250411 17:15:46.916" endtime="20250411 17:15:46.917"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Check All XEPA Services</arg>
+<arg>${sub dict}[ip]</arg>
+<arg>${sub dict}[username]</arg>
+<arg>${sub dict}[password1]</arg>
+<arg>${sub dict1}[ABR-IP]</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Check All XEPA Services" library="Health_Check">
+<arg>${sub dict}[ip]</arg>
+<arg>${sub dict}[username]</arg>
+<arg>${sub dict}[password1]</arg>
+<arg>${sub dict1}[ABR-IP]</arg>
+<kw name="Get Decrypted Text" library="CryptoLibrary">
+<var>${password}</var>
+<arg>${password1}</arg>
+<doc>Decrypts cipher text and returns the plain text.</doc>
+<msg timestamp="20250411 17:15:46.917" level="INFO">Decrypting text and return value.</msg>
+<msg timestamp="20250411 17:15:49.841" level="INFO">${password} = ***</msg>
+<status status="PASS" starttime="20250411 17:15:46.917" endtime="20250411 17:15:49.841"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${password}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:15:49.842" level="INFO">***</msg>
+<status status="PASS" starttime="20250411 17:15:49.841" endtime="20250411 17:15:49.842"/>
+</kw>
+<kw name="Establish Connection and Log In to AMB LAX directly" library="Common">
+<kw name="Establish Connection and Log In for Denv-NMS EU" library="Common">
+<kw name="Get Decrypted Text" library="CryptoLibrary">
+<var>${username}</var>
+<arg>${Chirag_nms_username}</arg>
+<doc>Decrypts cipher text and returns the plain text.</doc>
+<msg timestamp="20250411 17:15:49.842" level="INFO">Decrypting text and return value.</msg>
+<msg timestamp="20250411 17:15:49.842" level="INFO">${username} = ***</msg>
+<status status="PASS" starttime="20250411 17:15:49.842" endtime="20250411 17:15:49.842"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${username}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:15:49.842" level="INFO">***</msg>
+<status status="PASS" starttime="20250411 17:15:49.842" endtime="20250411 17:15:49.842"/>
+</kw>
+<kw name="Get Decrypted Text" library="CryptoLibrary">
+<var>${password}</var>
+<arg>${Chirag_nms_pass}</arg>
+<doc>Decrypts cipher text and returns the plain text.</doc>
+<msg timestamp="20250411 17:15:49.843" level="INFO">Decrypting text and return value.</msg>
+<msg timestamp="20250411 17:15:49.843" level="INFO">${password} = ***</msg>
+<status status="PASS" starttime="20250411 17:15:49.843" endtime="20250411 17:15:49.843"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${password}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:15:49.843" level="INFO">***</msg>
+<status status="PASS" starttime="20250411 17:15:49.843" endtime="20250411 17:15:49.843"/>
+</kw>
+<kw name="Open Connection" library="SSHLibrary">
+<var>${output}</var>
+<arg>${Host}</arg>
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<msg timestamp="20250411 17:15:49.843" level="INFO">${output} = 1</msg>
+<status status="PASS" starttime="20250411 17:15:49.843" endtime="20250411 17:15:49.843"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${output}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:15:49.843" level="INFO">1</msg>
+<status status="PASS" starttime="20250411 17:15:49.843" endtime="20250411 17:15:49.843"/>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<var>${Display}</var>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<arg>delay = 120</arg>
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<msg timestamp="20250411 17:15:49.844" level="INFO">Logging into 'nms-ixdub1-01.eu1.infra.asavie.net:22' as '***'.</msg>
+<msg timestamp="20250411 17:15:53.208" level="INFO">Read output: Linux nms-ixdub1-01 3.2.0-4-amd64 #1 SMP Debian 3.2.96-2 x86_64
+
+	nms-ixdub1-01/Network Management Server for IXDUB1
+
+Last login: Fri Apr 11 11:42:47 2025 from 10.81.3.246
+Cannot open display "default display"
+***@nms-ixdub1-01:~$</msg>
+<msg timestamp="20250411 17:15:53.208" level="INFO">${Display} = Linux nms-ixdub1-01 3.2.0-4-amd64 #1 SMP Debian 3.2.96-2 x86_64
+
+	nms-ixdub1-01/Network Management Server for IXDUB1
+
+Last login: Fri Apr 11 11:42:47 2025 from 10.81.3.246
+Cannot open display "d...</msg>
+<status status="PASS" starttime="20250411 17:15:49.844" endtime="20250411 17:15:53.208"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${Display}</arg>
+<arg>Last login</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250411 17:15:53.208" endtime="20250411 17:15:53.209"/>
+</kw>
+<status status="PASS" starttime="20250411 17:15:49.842" endtime="20250411 17:15:53.209"/>
+</kw>
+<kw name="Establish Connection AMB Server EU" library="Common">
+<kw name="Get Decrypted Text" library="CryptoLibrary">
+<var>${password}</var>
+<arg>${AMB_Lax_Password}</arg>
+<doc>Decrypts cipher text and returns the plain text.</doc>
+<msg timestamp="20250411 17:15:53.209" level="INFO">Decrypting text and return value.</msg>
+<msg timestamp="20250411 17:15:53.209" level="INFO">${password} = ***</msg>
+<status status="PASS" starttime="20250411 17:15:53.209" endtime="20250411 17:15:53.209"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${password}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:15:53.209" level="INFO">***</msg>
+<status status="PASS" starttime="20250411 17:15:53.209" endtime="20250411 17:15:53.210"/>
+</kw>
+<kw name="Open Connection" library="SSHLibrary">
+<var>${output}</var>
+<arg>${AMB_LAX01}</arg>
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<msg timestamp="20250411 17:15:53.210" level="INFO">${output} = 2</msg>
+<status status="PASS" starttime="20250411 17:15:53.210" endtime="20250411 17:15:53.210"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${output}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:15:53.210" level="INFO">2</msg>
+<status status="PASS" starttime="20250411 17:15:53.210" endtime="20250411 17:15:53.210"/>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<var>${Display}</var>
+<arg>${master_username}</arg>
+<arg>${password}</arg>
+<arg>delay = 120</arg>
+<arg>jumphost_index_or_alias=1</arg>
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<msg timestamp="20250411 17:15:53.210" level="INFO">index=1
+host=nms-ixdub1-01.eu1.infra.asavie.net
+alias=None
+port=22
+timeout=3 seconds
+newline=
+
+prompt=None
+term_type=vt100
+width=80
+height=24
+path_separator=/
+encoding=UTF-8
+escape_ansi=False
+encoding_errors=strict</msg>
+<msg timestamp="20250411 17:15:53.210" level="INFO">Logging into '172.24.21.40:22' as 'root'.</msg>
+<msg timestamp="20250411 17:15:57.017" level="INFO">Read output: Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 4.4.0-210-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+Welcome to Ubuntu 16.04 (Xenial Xerus)
+
+Hostname: AMB-LAX01-11
+
+Network configurations:
+
+nic: eth0 vlan: MGMT-SYS-LAX01
+nic: eth1 vlan: MGMT-VM-LAX01
+You have new mail.
+Last login: Fri Apr 11 11:42:51 2025 from 172.17.4.254
+root@AMB-LAX01-11:~#</msg>
+<msg timestamp="20250411 17:15:57.017" level="INFO">${Display} = Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 4.4.0-210-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu....</msg>
+<status status="PASS" starttime="20250411 17:15:53.210" endtime="20250411 17:15:57.017"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${Display}</arg>
+<arg>Last login</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250411 17:15:57.017" endtime="20250411 17:15:57.017"/>
+</kw>
+<status status="PASS" starttime="20250411 17:15:53.209" endtime="20250411 17:15:57.017"/>
+</kw>
+<status status="PASS" starttime="20250411 17:15:49.842" endtime="20250411 17:15:57.017"/>
+</kw>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${XEPA_master}</var>
+<arg>${ssh_command} ${password} ${ssh_o_command} ${username}@${ip} tail -10 /usr/local/var/log/xepa.log</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20250411 17:15:57.018" level="INFO">Executing command 'sshpass -p *** ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no -t root@172.24.40.28 tail -10 /usr/local/var/log/xepa.log'.</msg>
+<msg timestamp="20250411 17:15:58.504" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20250411 17:15:58.504" level="INFO">${XEPA_master} = Apr 11 11:45:53 XEPA-ATL01-01 XEPA: W3C: 172.30.142.9 11:45:53 0.00021 0 0 200 POST /xepa/session?broker=abr1.at3.naname.asavie.net&amp;sgid=f1ba88e4f9a03df7&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xep...</msg>
+<status status="PASS" starttime="20250411 17:15:57.018" endtime="20250411 17:15:58.504"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${XEPA_master}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:15:58.505" level="INFO">Apr 11 11:45:53 XEPA-ATL01-01 XEPA: W3C: 172.30.142.9 11:45:53 0.00021 0 0 200 POST /xepa/session?broker=abr1.at3.naname.asavie.net&amp;sgid=f1ba88e4f9a03df7&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: -1j2GNIWGUXaMrb6
+Apr 11 11:45:53 XEPA-ATL01-01 XEPA: W3C: 172.30.255.1 11:45:53 0.10741 186 0 201 POST /client #X-Xepa-Session: DJj5mGws8yTZcjim (abr2.at3.naname.asavie.net/efbbf52d720d986d)
+Apr 11 11:45:53 XEPA-ATL01-01 XEPA: W3C: 172.30.142.13 11:45:53 0.00019 0 0 200 POST /xepa/session?broker=abr1.pt0.naname.asavie.net&amp;sgid=fc0ca7895a4c7a50&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: 1btwsWn5Bx7BhHjp
+Apr 11 11:45:54 XEPA-ATL01-01 XEPA: W3C: 172.30.255.1 11:45:54 0.00074 0 0 404 GET /fib_update #X-Xepa-Session: 1btwsWn5Bx7BhHjp (abr1.pt0.naname.asavie.net/fc0ca7895a4c7a50)
+Apr 11 11:45:55 XEPA-ATL01-01 XEPA: W3C: 172.30.142.10 11:45:55 0.00026 0 0 200 POST /xepa/session?broker=abr2.at3.naname.asavie.net&amp;sgid=efbbf52d720d986d&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: DJj5mGws8yTZcjim
+Apr 11 11:45:55 XEPA-ATL01-01 XEPA: W3C: 172.30.142.12 11:45:55 0.00022 0 0 200 POST /xepa/session?broker=abr2.vz6.naname.asavie.net&amp;sgid=e42e2980e481a5f8&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: BDMkuhCNLdZ3pjY0
+Apr 11 11:45:57 XEPA-ATL01-01 XEPA: W3C: 172.30.255.1 11:45:57 0.10533 260 0 201 POST /client #X-Xepa-Session: -1j2GNIWGUXaMrb6 (abr1.at3.naname.asavie.net/f1ba88e4f9a03df7)
+Apr 11 11:45:57 XEPA-ATL01-01 XEPA: W3C: 172.30.255.1 11:45:57 0.00070 0 0 404 GET /fib_update #X-Xepa-Session: kZz0bMXS3_Wijuzn (abr1.vz6.naname.asavie.net/1f084c57a26af48a)
+Apr 11 11:45:57 XEPA-ATL01-01 XEPA: W3C: 172.30.142.11 11:45:57 0.00020 0 0 200 POST /xepa/session?broker=abr1.vz6.naname.asavie.net&amp;sgid=1f084c57a26af48a&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: kZz0bMXS3_Wijuzn
+Apr 11 11:45:58 XEPA-ATL01-01 XEPA: W3C: 172.30.142.14 11:45:58 0.00022 0 0 200 POST /xepa/session?broker=abr2.pt0.naname.asavie.net&amp;sgid=35ab9a6939e52c99&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: Z_3T9lS4uZVH4oF-</msg>
+<status status="PASS" starttime="20250411 17:15:58.504" endtime="20250411 17:15:58.505"/>
+</kw>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${totalCount}</var>
+<arg>echo "${XEPA_master}" | grep keepalive | wc -l</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20250411 17:15:58.505" level="INFO">Executing command 'echo "Apr 11 11:45:53 XEPA-ATL01-01 XEPA: W3C: 172.30.142.9 11:45:53 0.00021 0 0 200 POST /xepa/session?broker=abr1.at3.naname.asavie.net&amp;sgid=f1ba88e4f9a03df7&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: -1j2GNIWGUXaMrb6
+Apr 11 11:45:53 XEPA-ATL01-01 XEPA: W3C: 172.30.255.1 11:45:53 0.10741 186 0 201 POST /client #X-Xepa-Session: DJj5mGws8yTZcjim (abr2.at3.naname.asavie.net/efbbf52d720d986d)
+Apr 11 11:45:53 XEPA-ATL01-01 XEPA: W3C: 172.30.142.13 11:45:53 0.00019 0 0 200 POST /xepa/session?broker=abr1.pt0.naname.asavie.net&amp;sgid=fc0ca7895a4c7a50&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: 1btwsWn5Bx7BhHjp
+Apr 11 11:45:54 XEPA-ATL01-01 XEPA: W3C: 172.30.255.1 11:45:54 0.00074 0 0 404 GET /fib_update #X-Xepa-Session: 1btwsWn5Bx7BhHjp (abr1.pt0.naname.asavie.net/fc0ca7895a4c7a50)
+Apr 11 11:45:55 XEPA-ATL01-01 XEPA: W3C: 172.30.142.10 11:45:55 0.00026 0 0 200 POST /xepa/session?broker=abr2.at3.naname.asavie.net&amp;sgid=efbbf52d720d986d&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: DJj5mGws8yTZcjim
+Apr 11 11:45:55 XEPA-ATL01-01 XEPA: W3C: 172.30.142.12 11:45:55 0.00022 0 0 200 POST /xepa/session?broker=abr2.vz6.naname.asavie.net&amp;sgid=e42e2980e481a5f8&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: BDMkuhCNLdZ3pjY0
+Apr 11 11:45:57 XEPA-ATL01-01 XEPA: W3C: 172.30.255.1 11:45:57 0.10533 260 0 201 POST /client #X-Xepa-Session: -1j2GNIWGUXaMrb6 (abr1.at3.naname.asavie.net/f1ba88e4f9a03df7)
+Apr 11 11:45:57 XEPA-ATL01-01 XEPA: W3C: 172.30.255.1 11:45:57 0.00070 0 0 404 GET /fib_update #X-Xepa-Session: kZz0bMXS3_Wijuzn (abr1.vz6.naname.asavie.net/1f084c57a26af48a)
+Apr 11 11:45:57 XEPA-ATL01-01 XEPA: W3C: 172.30.142.11 11:45:57 0.00020 0 0 200 POST /xepa/session?broker=abr1.vz6.naname.asavie.net&amp;sgid=1f084c57a26af48a&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: kZz0bMXS3_Wijuzn
+Apr 11 11:45:58 XEPA-ATL01-01 XEPA: W3C: 172.30.142.14 11:45:58 0.00022 0 0 200 POST /xepa/session?broker=abr2.pt0.naname.asavie.net&amp;sgid=35ab9a6939e52c99&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: Z_3T9lS4uZVH4oF-" | grep keepalive | wc -l'.</msg>
+<msg timestamp="20250411 17:15:59.203" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20250411 17:15:59.204" level="INFO">${totalCount} = 6</msg>
+<status status="PASS" starttime="20250411 17:15:58.505" endtime="20250411 17:15:59.204"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${totalCount}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:15:59.204" level="INFO">6</msg>
+<status status="PASS" starttime="20250411 17:15:59.204" endtime="20250411 17:15:59.204"/>
+</kw>
+<if>
+<branch type="IF" condition="${totalCount} &gt; 1">
+<kw name="Log" library="BuiltIn">
+<arg>xepa is Master</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:15:59.204" level="INFO">xepa is Master</msg>
+<status status="PASS" starttime="20250411 17:15:59.204" endtime="20250411 17:15:59.204"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>Check XEPA if running as Master or Backup</arg>
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<kw name="Check XEPA if running as Master or Backup" library="Health_Check">
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${XEPA_master}</var>
+<arg>${ssh_command} ${password} ${ssh_o_command} ${username}@${ip} tail -10 /usr/local/var/log/xepa.log</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20250411 17:15:59.205" level="INFO">Executing command 'sshpass -p *** ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no -t root@172.24.40.28 tail -10 /usr/local/var/log/xepa.log'.</msg>
+<msg timestamp="20250411 17:16:00.706" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20250411 17:16:00.706" level="INFO">${XEPA_master} = Apr 11 11:45:55 XEPA-ATL01-01 XEPA: W3C: 172.30.142.12 11:45:55 0.00022 0 0 200 POST /xepa/session?broker=abr2.vz6.naname.asavie.net&amp;sgid=e42e2980e481a5f8&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xe...</msg>
+<status status="PASS" starttime="20250411 17:15:59.205" endtime="20250411 17:16:00.706"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${XEPA_master}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:00.707" level="INFO">Apr 11 11:45:55 XEPA-ATL01-01 XEPA: W3C: 172.30.142.12 11:45:55 0.00022 0 0 200 POST /xepa/session?broker=abr2.vz6.naname.asavie.net&amp;sgid=e42e2980e481a5f8&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: BDMkuhCNLdZ3pjY0
+Apr 11 11:45:57 XEPA-ATL01-01 XEPA: W3C: 172.30.255.1 11:45:57 0.10533 260 0 201 POST /client #X-Xepa-Session: -1j2GNIWGUXaMrb6 (abr1.at3.naname.asavie.net/f1ba88e4f9a03df7)
+Apr 11 11:45:57 XEPA-ATL01-01 XEPA: W3C: 172.30.255.1 11:45:57 0.00070 0 0 404 GET /fib_update #X-Xepa-Session: kZz0bMXS3_Wijuzn (abr1.vz6.naname.asavie.net/1f084c57a26af48a)
+Apr 11 11:45:57 XEPA-ATL01-01 XEPA: W3C: 172.30.142.11 11:45:57 0.00020 0 0 200 POST /xepa/session?broker=abr1.vz6.naname.asavie.net&amp;sgid=1f084c57a26af48a&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: kZz0bMXS3_Wijuzn
+Apr 11 11:45:58 XEPA-ATL01-01 XEPA: W3C: 172.30.142.14 11:45:58 0.00022 0 0 200 POST /xepa/session?broker=abr2.pt0.naname.asavie.net&amp;sgid=35ab9a6939e52c99&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: Z_3T9lS4uZVH4oF-
+Apr 11 11:45:58 XEPA-ATL01-01 XEPA: W3C: 172.30.142.9 11:45:58 0.00022 0 0 200 POST /xepa/session?broker=abr1.at3.naname.asavie.net&amp;sgid=f1ba88e4f9a03df7&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: -1j2GNIWGUXaMrb6
+Apr 11 11:45:58 XEPA-ATL01-01 XEPA: W3C: 172.30.142.13 11:45:58 0.00023 0 0 200 POST /xepa/session?broker=abr1.pt0.naname.asavie.net&amp;sgid=fc0ca7895a4c7a50&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: 1btwsWn5Bx7BhHjp
+Apr 11 11:45:59 XEPA-ATL01-01 XEPA: W3C: 172.30.255.1 11:45:59 0.00059 0 0 404 GET /fib_update #X-Xepa-Session: Z_3T9lS4uZVH4oF- (abr2.pt0.naname.asavie.net/35ab9a6939e52c99)
+Apr 11 11:46:00 XEPA-ATL01-01 XEPA: W3C: 172.30.142.10 11:46:00 0.00024 0 0 200 POST /xepa/session?broker=abr2.at3.naname.asavie.net&amp;sgid=efbbf52d720d986d&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: DJj5mGws8yTZcjim
+Apr 11 11:46:00 XEPA-ATL01-01 XEPA: W3C: 172.30.142.12 11:46:00 0.00026 0 0 200 POST /xepa/session?broker=abr2.vz6.naname.asavie.net&amp;sgid=e42e2980e481a5f8&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: BDMkuhCNLdZ3pjY0</msg>
+<status status="PASS" starttime="20250411 17:16:00.707" endtime="20250411 17:16:00.707"/>
+</kw>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${totalCount}</var>
+<arg>echo "${XEPA_master}" | grep keepalive | wc -l</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20250411 17:16:00.707" level="INFO">Executing command 'echo "Apr 11 11:45:55 XEPA-ATL01-01 XEPA: W3C: 172.30.142.12 11:45:55 0.00022 0 0 200 POST /xepa/session?broker=abr2.vz6.naname.asavie.net&amp;sgid=e42e2980e481a5f8&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: BDMkuhCNLdZ3pjY0
+Apr 11 11:45:57 XEPA-ATL01-01 XEPA: W3C: 172.30.255.1 11:45:57 0.10533 260 0 201 POST /client #X-Xepa-Session: -1j2GNIWGUXaMrb6 (abr1.at3.naname.asavie.net/f1ba88e4f9a03df7)
+Apr 11 11:45:57 XEPA-ATL01-01 XEPA: W3C: 172.30.255.1 11:45:57 0.00070 0 0 404 GET /fib_update #X-Xepa-Session: kZz0bMXS3_Wijuzn (abr1.vz6.naname.asavie.net/1f084c57a26af48a)
+Apr 11 11:45:57 XEPA-ATL01-01 XEPA: W3C: 172.30.142.11 11:45:57 0.00020 0 0 200 POST /xepa/session?broker=abr1.vz6.naname.asavie.net&amp;sgid=1f084c57a26af48a&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: kZz0bMXS3_Wijuzn
+Apr 11 11:45:58 XEPA-ATL01-01 XEPA: W3C: 172.30.142.14 11:45:58 0.00022 0 0 200 POST /xepa/session?broker=abr2.pt0.naname.asavie.net&amp;sgid=35ab9a6939e52c99&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: Z_3T9lS4uZVH4oF-
+Apr 11 11:45:58 XEPA-ATL01-01 XEPA: W3C: 172.30.142.9 11:45:58 0.00022 0 0 200 POST /xepa/session?broker=abr1.at3.naname.asavie.net&amp;sgid=f1ba88e4f9a03df7&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: -1j2GNIWGUXaMrb6
+Apr 11 11:45:58 XEPA-ATL01-01 XEPA: W3C: 172.30.142.13 11:45:58 0.00023 0 0 200 POST /xepa/session?broker=abr1.pt0.naname.asavie.net&amp;sgid=fc0ca7895a4c7a50&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: 1btwsWn5Bx7BhHjp
+Apr 11 11:45:59 XEPA-ATL01-01 XEPA: W3C: 172.30.255.1 11:45:59 0.00059 0 0 404 GET /fib_update #X-Xepa-Session: Z_3T9lS4uZVH4oF- (abr2.pt0.naname.asavie.net/35ab9a6939e52c99)
+Apr 11 11:46:00 XEPA-ATL01-01 XEPA: W3C: 172.30.142.10 11:46:00 0.00024 0 0 200 POST /xepa/session?broker=abr2.at3.naname.asavie.net&amp;sgid=efbbf52d720d986d&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: DJj5mGws8yTZcjim
+Apr 11 11:46:00 XEPA-ATL01-01 XEPA: W3C: 172.30.142.12 11:46:00 0.00026 0 0 200 POST /xepa/session?broker=abr2.vz6.naname.asavie.net&amp;sgid=e42e2980e481a5f8&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: BDMkuhCNLdZ3pjY0" | grep keepalive | wc -l'.</msg>
+<msg timestamp="20250411 17:16:01.411" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20250411 17:16:01.411" level="INFO">${totalCount} = 7</msg>
+<status status="PASS" starttime="20250411 17:16:00.707" endtime="20250411 17:16:01.411"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${totalCount}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:01.411" level="INFO">7</msg>
+<status status="PASS" starttime="20250411 17:16:01.411" endtime="20250411 17:16:01.411"/>
+</kw>
+<if>
+<branch type="IF" condition="${totalCount} &gt; 1">
+<kw name="Log" library="BuiltIn">
+<arg>xepa is Master</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:01.411" level="INFO">xepa is Master</msg>
+<status status="PASS" starttime="20250411 17:16:01.411" endtime="20250411 17:16:01.411"/>
+</kw>
+<status status="PASS" starttime="20250411 17:16:01.411" endtime="20250411 17:16:01.411"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" library="BuiltIn">
+<arg>xepa is slave</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:01.412" endtime="20250411 17:16:01.412"/>
+</kw>
+<status status="NOT RUN" starttime="20250411 17:16:01.411" endtime="20250411 17:16:01.412"/>
+</branch>
+<status status="PASS" starttime="20250411 17:16:01.411" endtime="20250411 17:16:01.412"/>
+</if>
+<status status="PASS" starttime="20250411 17:15:59.205" endtime="20250411 17:16:01.412"/>
+</kw>
+<status status="PASS" starttime="20250411 17:15:59.204" endtime="20250411 17:16:01.412"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>Check Core's reachablility from XEPA</arg>
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<kw name="Check Core's reachablility from XEPA" library="Health_Check">
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${XEPA_master_1}</var>
+<arg>${ssh_command} ${password} ${ssh_o_command} ${username}@${ip} "cat /etc/xepa.d/tpyd.sysconf | grep -v '#' | grep OrchSrvr.addr"</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20250411 17:16:01.412" level="INFO">Executing command 'sshpass -p *** ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no -t root@172.24.40.28 "cat /etc/xepa.d/tpyd.sysconf | grep -v '#' | grep OrchSrvr.addr"'.</msg>
+<msg timestamp="20250411 17:16:02.934" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20250411 17:16:02.934" level="INFO">${XEPA_master_1} = OrchSrvr.addr = 172.30.255.1</msg>
+<status status="PASS" starttime="20250411 17:16:01.412" endtime="20250411 17:16:02.934"/>
+</kw>
+<kw name="Should Match Regexp" library="BuiltIn">
+<var>${XEPA_master}</var>
+<arg>${XEPA_master_1}</arg>
+<arg>${IPregex}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<msg timestamp="20250411 17:16:02.935" level="INFO">${XEPA_master} = 172.30.255.1</msg>
+<status status="PASS" starttime="20250411 17:16:02.934" endtime="20250411 17:16:02.935"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${XEPA_master}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:02.935" level="INFO">172.30.255.1</msg>
+<status status="PASS" starttime="20250411 17:16:02.935" endtime="20250411 17:16:02.935"/>
+</kw>
+<if>
+<branch type="IF" condition="&quot;${XEPA_master}&quot; == &quot;${IP_of_Core}&quot;">
+<kw name="Log" library="BuiltIn">
+<arg>Server is pointing to Core</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:02.935" level="INFO">Server is pointing to Core</msg>
+<status status="PASS" starttime="20250411 17:16:02.935" endtime="20250411 17:16:02.935"/>
+</kw>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${resp}</var>
+<arg>${ssh_command} ${password} ${ssh_o_command} ${username}@${ip} "ping -c 2 -I eth1 ${IP_of_Core}"</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20250411 17:16:02.935" level="INFO">Executing command 'sshpass -p *** ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no -t root@172.24.40.28 "ping -c 2 -I eth1 172.30.255.1"'.</msg>
+<msg timestamp="20250411 17:16:05.551" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20250411 17:16:05.551" level="INFO">${resp} = PING 172.30.255.1 (172.30.255.1) from 172.30.142.24 eth1: 56(84) bytes of data.
+64 bytes from 172.30.255.1: icmp_seq=1 ttl=122 time=104 ms
+64 bytes from 172.30.255.1: icmp_seq=1 ttl=122 time=104 ms (D...</msg>
+<status status="PASS" starttime="20250411 17:16:02.935" endtime="20250411 17:16:05.551"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${Destination_Host_Unreachable}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250411 17:16:05.551" endtime="20250411 17:16:05.551"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${Something_is_wrong}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250411 17:16:05.552" endtime="20250411 17:16:05.552"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${64byts}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250411 17:16:05.552" endtime="20250411 17:16:05.552"/>
+</kw>
+<status status="PASS" starttime="20250411 17:16:02.935" endtime="20250411 17:16:05.552"/>
+</branch>
+<branch type="ELSE IF" condition="&quot;${XEPA_master}&quot; == &quot;${IP_of_PortableNW_zz0}&quot;">
+<kw name="Log" library="BuiltIn">
+<arg>Server is pointing to Portable Network</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:05.552" endtime="20250411 17:16:05.552"/>
+</kw>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${resp}</var>
+<arg>${ssh_command} ${password} ${ssh_o_command} ${username}@${ip} "ping -c 2 -I eth1 ${IP_of_PortableNW_zz0}"</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:05.552" endtime="20250411 17:16:05.552"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${Destination_Host_Unreachable}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:05.552" endtime="20250411 17:16:05.552"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${Something_is_wrong}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:05.552" endtime="20250411 17:16:05.552"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${64byts}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:05.552" endtime="20250411 17:16:05.552"/>
+</kw>
+<status status="NOT RUN" starttime="20250411 17:16:05.552" endtime="20250411 17:16:05.552"/>
+</branch>
+<branch type="ELSE IF" condition="&quot;${XEPA_master}&quot; == &quot;${IP_of_staging_Core}&quot;">
+<kw name="Log" library="BuiltIn">
+<arg>Server is pointing to Portable Network</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:05.552" endtime="20250411 17:16:05.552"/>
+</kw>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${resp}</var>
+<arg>${ssh_command} ${password} ${ssh_o_command} ${username}@${ip} "ping -c 2 -I eth1 ${IP_of_staging_Core}"</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:05.553" endtime="20250411 17:16:05.553"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${Destination_Host_Unreachable}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:05.553" endtime="20250411 17:16:05.553"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${Something_is_wrong}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:05.553" endtime="20250411 17:16:05.553"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${64byts}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:05.553" endtime="20250411 17:16:05.553"/>
+</kw>
+<status status="NOT RUN" starttime="20250411 17:16:05.552" endtime="20250411 17:16:05.553"/>
+</branch>
+<branch type="ELSE IF" condition="&quot;${XEPA_master}&quot; == &quot;${IP_of_Core_Singapore}&quot;">
+<kw name="Log" library="BuiltIn">
+<arg>Server is pointing to core of singapore</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:05.553" endtime="20250411 17:16:05.553"/>
+</kw>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${resp}</var>
+<arg>${ssh_command} ${password} ${ssh_o_command} ${username}@${ip} "ping -c 2 -I eth1 ${IP_of_Core_Singapore}"</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:05.553" endtime="20250411 17:16:05.553"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${Destination_Host_Unreachable}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:05.553" endtime="20250411 17:16:05.553"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${Something_is_wrong}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:05.553" endtime="20250411 17:16:05.553"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${64byts}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:05.553" endtime="20250411 17:16:05.553"/>
+</kw>
+<status status="NOT RUN" starttime="20250411 17:16:05.553" endtime="20250411 17:16:05.553"/>
+</branch>
+<branch type="ELSE">
+<kw name="Fail" library="BuiltIn">
+<arg>log</arg>
+<arg>Something is wrong, instead of Core or Emulator the response returned is ${XEPA_master}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:05.553" endtime="20250411 17:16:05.553"/>
+</kw>
+<status status="NOT RUN" starttime="20250411 17:16:05.553" endtime="20250411 17:16:05.553"/>
+</branch>
+<status status="PASS" starttime="20250411 17:16:02.935" endtime="20250411 17:16:05.553"/>
+</if>
+<status status="PASS" starttime="20250411 17:16:01.412" endtime="20250411 17:16:05.554"/>
+</kw>
+<status status="PASS" starttime="20250411 17:16:01.412" endtime="20250411 17:16:05.554"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>Check whether pointing to Core</arg>
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<kw name="Check whether pointing to Core" library="Health_Check">
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${XEPA_master}</var>
+<arg>${ssh_command} ${password} ${ssh_o_command} ${username}@${ip} grep ^OrchSrvr.addr /etc/xepa.d/tpyd.sysconf | cut -f3 -d " "</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20250411 17:16:05.555" level="INFO">Executing command 'sshpass -p *** ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no -t root@172.24.40.28 grep ^OrchSrvr.addr /etc/xepa.d/tpyd.sysconf | cut -f3 -d " "'.</msg>
+<msg timestamp="20250411 17:16:07.099" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20250411 17:16:07.100" level="INFO">${XEPA_master} = 172.30.255.1</msg>
+<status status="PASS" starttime="20250411 17:16:05.554" endtime="20250411 17:16:07.100"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${XEPA_master}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:07.100" level="INFO">172.30.255.1</msg>
+<status status="PASS" starttime="20250411 17:16:07.100" endtime="20250411 17:16:07.100"/>
+</kw>
+<if>
+<branch type="IF" condition="&quot;${XEPA_master}&quot; == &quot;${empty}&quot;">
+<kw name="Fail" library="BuiltIn">
+<arg>log</arg>
+<arg>Core IP is missing from tpyd.conf</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:07.101" endtime="20250411 17:16:07.101"/>
+</kw>
+<status status="NOT RUN" starttime="20250411 17:16:07.101" endtime="20250411 17:16:07.101"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" library="BuiltIn">
+<arg>Core IP is there in tpyd.conf</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:07.102" level="INFO">Core IP is there in tpyd.conf</msg>
+<status status="PASS" starttime="20250411 17:16:07.101" endtime="20250411 17:16:07.102"/>
+</kw>
+<status status="PASS" starttime="20250411 17:16:07.101" endtime="20250411 17:16:07.102"/>
+</branch>
+<status status="PASS" starttime="20250411 17:16:07.100" endtime="20250411 17:16:07.102"/>
+</if>
+<status status="PASS" starttime="20250411 17:16:05.554" endtime="20250411 17:16:07.102"/>
+</kw>
+<status status="PASS" starttime="20250411 17:16:05.554" endtime="20250411 17:16:07.102"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>Check Gateway Ip from XEPA</arg>
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<kw name="Check Gateway Ip from XEPA" library="Health_Check">
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${XEPA_gateway}</var>
+<arg>${ssh_command} ${password} ${ssh_o_command} ${username}@${ip} grep 172.30.255 /etc/sysconfig/network-scripts/route-eth1 | awk '{ print $3 }'</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20250411 17:16:07.102" level="INFO">Executing command 'sshpass -p *** ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no -t root@172.24.40.28 grep 172.30.255 /etc/sysconfig/network-scripts/route-eth1 | awk '{ print $3 }''.</msg>
+<msg timestamp="20250411 17:16:08.612" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20250411 17:16:08.612" level="INFO">${XEPA_gateway} = 172.30.142.1</msg>
+<status status="PASS" starttime="20250411 17:16:07.102" endtime="20250411 17:16:08.612"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${XEPA_gateway}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:08.612" level="INFO">172.30.142.1</msg>
+<status status="PASS" starttime="20250411 17:16:08.612" endtime="20250411 17:16:08.612"/>
+</kw>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${resp}</var>
+<arg>${ssh_command} ${password} ${ssh_o_command} ${username}@${ip} ping -c 2 -I eth1 "${XEPA_gateway}"</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20250411 17:16:08.612" level="INFO">Executing command 'sshpass -p *** ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no -t root@172.24.40.28 ping -c 2 -I eth1 "172.30.142.1"'.</msg>
+<msg timestamp="20250411 17:16:11.171" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20250411 17:16:11.171" level="INFO">${resp} = PING 172.30.142.1 (172.30.142.1) from 172.30.142.24 eth1: 56(84) bytes of data.
+64 bytes from 172.30.142.1: icmp_seq=1 ttl=64 time=8.31 ms
+64 bytes from 172.30.142.1: icmp_seq=2 ttl=64 time=13.2 ms
+
+-...</msg>
+<status status="PASS" starttime="20250411 17:16:08.612" endtime="20250411 17:16:11.171"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${resp}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:11.171" level="INFO">PING 172.30.142.1 (172.30.142.1) from 172.30.142.24 eth1: 56(84) bytes of data.
+64 bytes from 172.30.142.1: icmp_seq=1 ttl=64 time=8.31 ms
+64 bytes from 172.30.142.1: icmp_seq=2 ttl=64 time=13.2 ms
+
+--- 172.30.142.1 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1014ms
+rtt min/avg/max/mdev = 8.311/10.769/13.227/2.458 ms</msg>
+<status status="PASS" starttime="20250411 17:16:11.171" endtime="20250411 17:16:11.171"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${Destination_Host_Unreachable}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250411 17:16:11.171" endtime="20250411 17:16:11.171"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${Something_is_wrong}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250411 17:16:11.172" endtime="20250411 17:16:11.172"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${64byts}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250411 17:16:11.172" endtime="20250411 17:16:11.172"/>
+</kw>
+<status status="PASS" starttime="20250411 17:16:07.102" endtime="20250411 17:16:11.172"/>
+</kw>
+<status status="PASS" starttime="20250411 17:16:07.102" endtime="20250411 17:16:11.172"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>Check TCP connectivity to Core from XEPA</arg>
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<kw name="Check TCP connectivity to Core from XEPA" library="Health_Check">
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${XEPA_tcp}</var>
+<arg>${ssh_command} ${password} ${ssh_o_command} ${username}@${ip} netstat -a | grep http</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20250411 17:16:11.173" level="INFO">Executing command 'sshpass -p *** ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no -t root@172.24.40.28 netstat -a | grep http'.</msg>
+<msg timestamp="20250411 17:16:12.758" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20250411 17:16:12.759" level="INFO">${XEPA_tcp} = tcp        0      0 *:http                  *:*                     LISTEN      
+tcp        0     45 172.30.142.24:http      172.30.255.1:53113      ESTABLISHED 
+tcp        0      0 172.30.142.24:http...</msg>
+<status status="PASS" starttime="20250411 17:16:11.172" endtime="20250411 17:16:12.759"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${XEPA_tcp}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:12.759" level="INFO">tcp        0      0 *:http                  *:*                     LISTEN      
+tcp        0     45 172.30.142.24:http      172.30.255.1:53113      ESTABLISHED 
+tcp        0      0 172.30.142.24:http      172.30.255.1:60434      ESTABLISHED 
+tcp        0      0 172.30.142.24:52971     172.30.142.12:http      ESTABLISHED 
+tcp        0      0 172.30.142.24:53330     172.30.142.10:http      ESTABLISHED 
+tcp        0      0 172.30.142.24:53336     172.30.142.14:http      ESTABLISHED 
+tcp        0      0 172.30.142.24:53337     172.30.142.14:http      TIME_WAIT   
+tcp        0      0 172.30.142.24:51891     172.30.142.11:http      ESTABLISHED 
+tcp        0      0 172.30.142.24:53332     172.30.142.9:http       ESTABLISHED 
+tcp        0      0 172.30.142.24:53326     172.30.142.13:http      ESTABLISHED </msg>
+<status status="PASS" starttime="20250411 17:16:12.759" endtime="20250411 17:16:12.760"/>
+</kw>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${totalCount}</var>
+<arg>echo "${XEPA_tcp}" | grep 172.30.255 | grep ESTABLISHED | wc -l</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20250411 17:16:12.760" level="INFO">Executing command 'echo "tcp        0      0 *:http                  *:*                     LISTEN      
+tcp        0     45 172.30.142.24:http      172.30.255.1:53113      ESTABLISHED 
+tcp        0      0 172.30.142.24:http      172.30.255.1:60434      ESTABLISHED 
+tcp        0      0 172.30.142.24:52971     172.30.142.12:http      ESTABLISHED 
+tcp        0      0 172.30.142.24:53330     172.30.142.10:http      ESTABLISHED 
+tcp        0      0 172.30.142.24:53336     172.30.142.14:http      ESTABLISHED 
+tcp        0      0 172.30.142.24:53337     172.30.142.14:http      TIME_WAIT   
+tcp        0      0 172.30.142.24:51891     172.30.142.11:http      ESTABLISHED 
+tcp        0      0 172.30.142.24:53332     172.30.142.9:http       ESTABLISHED 
+tcp        0      0 172.30.142.24:53326     172.30.142.13:http      ESTABLISHED " | grep 172.30.255 | grep ESTABLISHED | wc -l'.</msg>
+<msg timestamp="20250411 17:16:13.460" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20250411 17:16:13.460" level="INFO">${totalCount} = 2</msg>
+<status status="PASS" starttime="20250411 17:16:12.760" endtime="20250411 17:16:13.460"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${totalCount}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:13.460" level="INFO">2</msg>
+<status status="PASS" starttime="20250411 17:16:13.460" endtime="20250411 17:16:13.460"/>
+</kw>
+<if>
+<branch type="IF" condition="${totalCount} &lt; 1">
+<kw name="Fail" library="BuiltIn">
+<arg>log</arg>
+<arg>TCP:Connection to Core/CEMU is down</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:13.460" endtime="20250411 17:16:13.460"/>
+</kw>
+<status status="NOT RUN" starttime="20250411 17:16:13.460" endtime="20250411 17:16:13.460"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" library="BuiltIn">
+<arg>TCP:Connection to Core/CEMU is established</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:13.460" level="INFO">TCP:Connection to Core/CEMU is established</msg>
+<status status="PASS" starttime="20250411 17:16:13.460" endtime="20250411 17:16:13.460"/>
+</kw>
+<status status="PASS" starttime="20250411 17:16:13.460" endtime="20250411 17:16:13.461"/>
+</branch>
+<status status="PASS" starttime="20250411 17:16:13.460" endtime="20250411 17:16:13.461"/>
+</if>
+<status status="PASS" starttime="20250411 17:16:11.172" endtime="20250411 17:16:13.461"/>
+</kw>
+<status status="PASS" starttime="20250411 17:16:11.172" endtime="20250411 17:16:13.461"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>Check TCP connectivity to ABR from XEPA</arg>
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<kw name="Check TCP connectivity to ABR from XEPA" library="Health_Check">
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${XEPA_tcp}</var>
+<arg>${ssh_command} ${password} ${ssh_o_command} ${username}@${ip} netstat -a | grep http</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20250411 17:16:13.461" level="INFO">Executing command 'sshpass -p *** ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no -t root@172.24.40.28 netstat -a | grep http'.</msg>
+<msg timestamp="20250411 17:16:15.098" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20250411 17:16:15.098" level="INFO">${XEPA_tcp} = tcp        0      0 *:http                  *:*                     LISTEN      
+tcp        0      0 172.30.142.24:http      172.30.255.1:53113      ESTABLISHED 
+tcp        0      0 172.30.142.24:http...</msg>
+<status status="PASS" starttime="20250411 17:16:13.461" endtime="20250411 17:16:15.098"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${XEPA_tcp}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:15.099" level="INFO">tcp        0      0 *:http                  *:*                     LISTEN      
+tcp        0      0 172.30.142.24:http      172.30.255.1:53113      ESTABLISHED 
+tcp        0      0 172.30.142.24:http      172.30.255.1:56186      ESTABLISHED 
+tcp        0      0 172.30.142.24:52971     172.30.142.12:http      ESTABLISHED 
+tcp        0      0 172.30.142.24:53330     172.30.142.10:http      ESTABLISHED 
+tcp        0      0 172.30.142.24:53336     172.30.142.14:http      ESTABLISHED 
+tcp        0      0 172.30.142.24:53337     172.30.142.14:http      TIME_WAIT   
+tcp        0      0 172.30.142.24:http      172.30.255.1:52415      ESTABLISHED 
+tcp        0      0 172.30.142.24:51891     172.30.142.11:http      ESTABLISHED 
+tcp        0      0 172.30.142.24:53332     172.30.142.9:http       ESTABLISHED 
+tcp        0      0 172.30.142.24:53326     172.30.142.13:http      ESTABLISHED </msg>
+<status status="PASS" starttime="20250411 17:16:15.098" endtime="20250411 17:16:15.099"/>
+</kw>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${totalCount}</var>
+<arg>echo "${XEPA_tcp}" | grep ESTABLISHED | awk '{ print $5 }' | grep -v 172.30.255.2 | wc -l</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20250411 17:16:15.099" level="INFO">Executing command 'echo "tcp        0      0 *:http                  *:*                     LISTEN      
+tcp        0      0 172.30.142.24:http      172.30.255.1:53113      ESTABLISHED 
+tcp        0      0 172.30.142.24:http      172.30.255.1:56186      ESTABLISHED 
+tcp        0      0 172.30.142.24:52971     172.30.142.12:http      ESTABLISHED 
+tcp        0      0 172.30.142.24:53330     172.30.142.10:http      ESTABLISHED 
+tcp        0      0 172.30.142.24:53336     172.30.142.14:http      ESTABLISHED 
+tcp        0      0 172.30.142.24:53337     172.30.142.14:http      TIME_WAIT   
+tcp        0      0 172.30.142.24:http      172.30.255.1:52415      ESTABLISHED 
+tcp        0      0 172.30.142.24:51891     172.30.142.11:http      ESTABLISHED 
+tcp        0      0 172.30.142.24:53332     172.30.142.9:http       ESTABLISHED 
+tcp        0      0 172.30.142.24:53326     172.30.142.13:http      ESTABLISHED " | grep ESTABLISHED | awk '{ print $5 }' | grep -v 172.30.255.2 | wc -l'.</msg>
+<msg timestamp="20250411 17:16:15.798" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20250411 17:16:15.798" level="INFO">${totalCount} = 9</msg>
+<status status="PASS" starttime="20250411 17:16:15.099" endtime="20250411 17:16:15.798"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${totalCount}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:15.799" level="INFO">9</msg>
+<status status="PASS" starttime="20250411 17:16:15.798" endtime="20250411 17:16:15.799"/>
+</kw>
+<if>
+<branch type="IF" condition="${totalCount} &lt; 1">
+<kw name="Fail" library="BuiltIn">
+<arg>log</arg>
+<arg>TCP:Connection to ABRs is down</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:15.799" endtime="20250411 17:16:15.799"/>
+</kw>
+<status status="NOT RUN" starttime="20250411 17:16:15.799" endtime="20250411 17:16:15.799"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" library="BuiltIn">
+<arg>TCP:Total ABRs with established status are ${totalCount}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:15.799" level="INFO">TCP:Total ABRs with established status are 9</msg>
+<status status="PASS" starttime="20250411 17:16:15.799" endtime="20250411 17:16:15.799"/>
+</kw>
+<status status="PASS" starttime="20250411 17:16:15.799" endtime="20250411 17:16:15.799"/>
+</branch>
+<status status="PASS" starttime="20250411 17:16:15.799" endtime="20250411 17:16:15.799"/>
+</if>
+<status status="PASS" starttime="20250411 17:16:13.461" endtime="20250411 17:16:15.799"/>
+</kw>
+<status status="PASS" starttime="20250411 17:16:13.461" endtime="20250411 17:16:15.799"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>Check Nanames from XEPA and connectivity with each of the ABRs</arg>
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<arg>${ABR-IP}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<kw name="Check Nanames from XEPA and connectivity with each of the ABRs" library="Health_Check">
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<arg>${ABR-IP}</arg>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${XEPA_Nanames}</var>
+<arg>${ssh_command} ${password} ${ssh_o_command} ${username}@${ABR-IP} grep naname /etc/hosts | awk '{ print $3 }' | cut -d'.' -f2</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20250411 17:16:15.800" level="INFO">Executing command 'sshpass -p *** ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no -t root@172.24.40.16 grep naname /etc/hosts | awk '{ print $3 }' | cut -d'.' -f2'.</msg>
+<msg timestamp="20250411 17:16:17.521" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20250411 17:16:17.521" level="INFO">${XEPA_Nanames} = at3</msg>
+<status status="PASS" starttime="20250411 17:16:15.800" endtime="20250411 17:16:17.521"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${XEPA_Nanames}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:17.521" level="INFO">at3</msg>
+<status status="PASS" starttime="20250411 17:16:17.521" endtime="20250411 17:16:17.521"/>
+</kw>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${XEPA_namesoutput}</var>
+<arg>${ssh_command} ${password} ${ssh_o_command} ${username}@${ABR-IP} grep naname /etc/hosts | awk '{ print $3 }' | awk -F'[ .]' '{ print $1"."$2 }'</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20250411 17:16:17.522" level="INFO">Executing command 'sshpass -p *** ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no -t root@172.24.40.16 grep naname /etc/hosts | awk '{ print $3 }' | awk -F'[ .]' '{ print $1"."$2 }''.</msg>
+<msg timestamp="20250411 17:16:19.256" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20250411 17:16:19.256" level="INFO">${XEPA_namesoutput} = abr1.at3</msg>
+<status status="PASS" starttime="20250411 17:16:17.521" endtime="20250411 17:16:19.256"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${XEPA_namesoutput}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:19.256" level="INFO">abr1.at3</msg>
+<status status="PASS" starttime="20250411 17:16:19.256" endtime="20250411 17:16:19.256"/>
+</kw>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${XEPA_keepalive}</var>
+<arg>${ssh_command} ${password} ${ssh_o_command} ${username}@${ip} "tac xepa.log | awk '/keepalive/ &amp;&amp; /${XEPA_namesoutput}/{print \\\$3; exit}'"</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20250411 17:16:19.257" level="INFO">Executing command 'sshpass -p *** ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no -t root@172.24.40.28 "tac xepa.log | awk '/keepalive/ &amp;&amp; /abr1.at3/{print \$3; exit}'"'.</msg>
+<msg timestamp="20250411 17:16:20.779" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20250411 17:16:20.779" level="INFO">${XEPA_keepalive} = 11:46:18</msg>
+<status status="PASS" starttime="20250411 17:16:19.257" endtime="20250411 17:16:20.779"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${XEPA_keepalive}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:20.779" level="INFO">11:46:18</msg>
+<status status="PASS" starttime="20250411 17:16:20.779" endtime="20250411 17:16:20.779"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>10s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20250411 17:16:30.780" level="INFO">Slept 10 seconds</msg>
+<status status="PASS" starttime="20250411 17:16:20.780" endtime="20250411 17:16:30.780"/>
+</kw>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${XEPA_keepalive1}</var>
+<arg>${ssh_command} ${password} ${ssh_o_command} ${username}@${ip} "tac xepa.log | awk '/keepalive/ &amp;&amp; /${XEPA_namesoutput}/{print \\\$3; exit}'"</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20250411 17:16:30.780" level="INFO">Executing command 'sshpass -p *** ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no -t root@172.24.40.28 "tac xepa.log | awk '/keepalive/ &amp;&amp; /abr1.at3/{print \$3; exit}'"'.</msg>
+<msg timestamp="20250411 17:16:32.394" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20250411 17:16:32.394" level="INFO">${XEPA_keepalive1} = 11:46:28</msg>
+<status status="PASS" starttime="20250411 17:16:30.780" endtime="20250411 17:16:32.394"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${XEPA_keepalive1}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:32.394" level="INFO">11:46:28</msg>
+<status status="PASS" starttime="20250411 17:16:32.394" endtime="20250411 17:16:32.395"/>
+</kw>
+<if>
+<branch type="IF" condition="&quot;${XEPA_keepalive}&quot; &lt; &quot;${XEPA_keepalive1}&quot;">
+<kw name="Log" library="BuiltIn">
+<arg>Xepa is connected to "${XEPA_namesoutput}"</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:32.395" level="INFO">Xepa is connected to "abr1.at3"</msg>
+<status status="PASS" starttime="20250411 17:16:32.395" endtime="20250411 17:16:32.395"/>
+</kw>
+<status status="PASS" starttime="20250411 17:16:32.395" endtime="20250411 17:16:32.395"/>
+</branch>
+<branch type="ELSE">
+<kw name="Fail" library="BuiltIn">
+<arg>log</arg>
+<arg>Xepa connectivity is lost with" "${XEPA_namesoutput}"</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:32.395" endtime="20250411 17:16:32.395"/>
+</kw>
+<status status="NOT RUN" starttime="20250411 17:16:32.395" endtime="20250411 17:16:32.395"/>
+</branch>
+<status status="PASS" starttime="20250411 17:16:32.395" endtime="20250411 17:16:32.395"/>
+</if>
+<status status="PASS" starttime="20250411 17:16:15.799" endtime="20250411 17:16:32.395"/>
+</kw>
+<status status="PASS" starttime="20250411 17:16:15.799" endtime="20250411 17:16:32.395"/>
+</kw>
+<status status="PASS" starttime="20250411 17:15:59.204" endtime="20250411 17:16:32.395"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" library="BuiltIn">
+<arg>xepa is slave</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:32.395" endtime="20250411 17:16:32.395"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>Check XEPA if running as Master or Backup</arg>
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:32.395" endtime="20250411 17:16:32.396"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>Check Core's reachablility from XEPA</arg>
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:32.396" endtime="20250411 17:16:32.396"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>Check whether pointing to Core</arg>
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:32.396" endtime="20250411 17:16:32.396"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>Check Gateway Ip from XEPA</arg>
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:32.396" endtime="20250411 17:16:32.396"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>Check TCP connectivity to Core from XEPA</arg>
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:32.397" endtime="20250411 17:16:32.397"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>Check TCP connectivity to ABR from XEPA</arg>
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:32.397" endtime="20250411 17:16:32.397"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>Check Nanames from XEPA and connectivity with each of the ABRs</arg>
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<arg>${ABR-IP}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:32.397" endtime="20250411 17:16:32.397"/>
+</kw>
+<status status="NOT RUN" starttime="20250411 17:16:32.395" endtime="20250411 17:16:32.397"/>
+</branch>
+<status status="PASS" starttime="20250411 17:15:59.204" endtime="20250411 17:16:32.397"/>
+</if>
+<kw name="Close All Connections" library="SSHLibrary">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20250411 17:16:32.397" endtime="20250411 17:16:32.397"/>
+</kw>
+<status status="PASS" starttime="20250411 17:15:46.917" endtime="20250411 17:16:32.397"/>
+</kw>
+<msg timestamp="20250411 17:16:32.397" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20250411 17:15:46.917" endtime="20250411 17:16:32.397"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${status}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:32.397" level="INFO">True</msg>
+<status status="PASS" starttime="20250411 17:16:32.397" endtime="20250411 17:16:32.397"/>
+</kw>
+<status status="PASS" starttime="20250411 17:15:46.916" endtime="20250411 17:16:32.397"/>
+</iter>
+<iter>
+<var name="${key}">ABR-ATL01-02</var>
+<kw name="Get From Dictionary" library="Collections">
+<var>${sub dict1}</var>
+<arg>${properties1}</arg>
+<arg>${key}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20250411 17:16:32.398" level="INFO">${sub dict1} = {'ABR-IP': '172.24.40.17', 'username': 'root', 'password1': 'crypt:x2wZAKB5prcln1gNrOA7HE5+xtEFE2HzM0G6ue9Sw2eC1dKtzKsZ1apSauCXbkF/TsC8hx9oYiiojhf+VA=='}</msg>
+<status status="PASS" starttime="20250411 17:16:32.398" endtime="20250411 17:16:32.398"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${sub dict1}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:32.398" level="INFO">{'ABR-IP': '172.24.40.17', 'username': 'root', 'password1': 'crypt:x2wZAKB5prcln1gNrOA7HE5+xtEFE2HzM0G6ue9Sw2eC1dKtzKsZ1apSauCXbkF/TsC8hx9oYiiojhf+VA=='}</msg>
+<status status="PASS" starttime="20250411 17:16:32.398" endtime="20250411 17:16:32.398"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Check All XEPA Services</arg>
+<arg>${sub dict}[ip]</arg>
+<arg>${sub dict}[username]</arg>
+<arg>${sub dict}[password1]</arg>
+<arg>${sub dict1}[ABR-IP]</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Check All XEPA Services" library="Health_Check">
+<arg>${sub dict}[ip]</arg>
+<arg>${sub dict}[username]</arg>
+<arg>${sub dict}[password1]</arg>
+<arg>${sub dict1}[ABR-IP]</arg>
+<kw name="Get Decrypted Text" library="CryptoLibrary">
+<var>${password}</var>
+<arg>${password1}</arg>
+<doc>Decrypts cipher text and returns the plain text.</doc>
+<msg timestamp="20250411 17:16:32.398" level="INFO">Decrypting text and return value.</msg>
+<msg timestamp="20250411 17:16:32.399" level="INFO">${password} = ***</msg>
+<status status="PASS" starttime="20250411 17:16:32.398" endtime="20250411 17:16:32.399"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${password}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:32.399" level="INFO">***</msg>
+<status status="PASS" starttime="20250411 17:16:32.399" endtime="20250411 17:16:32.399"/>
+</kw>
+<kw name="Establish Connection and Log In to AMB LAX directly" library="Common">
+<kw name="Establish Connection and Log In for Denv-NMS EU" library="Common">
+<kw name="Get Decrypted Text" library="CryptoLibrary">
+<var>${username}</var>
+<arg>${Chirag_nms_username}</arg>
+<doc>Decrypts cipher text and returns the plain text.</doc>
+<msg timestamp="20250411 17:16:32.399" level="INFO">Decrypting text and return value.</msg>
+<msg timestamp="20250411 17:16:32.400" level="INFO">${username} = ***</msg>
+<status status="PASS" starttime="20250411 17:16:32.399" endtime="20250411 17:16:32.400"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${username}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:32.400" level="INFO">***</msg>
+<status status="PASS" starttime="20250411 17:16:32.400" endtime="20250411 17:16:32.400"/>
+</kw>
+<kw name="Get Decrypted Text" library="CryptoLibrary">
+<var>${password}</var>
+<arg>${Chirag_nms_pass}</arg>
+<doc>Decrypts cipher text and returns the plain text.</doc>
+<msg timestamp="20250411 17:16:32.400" level="INFO">Decrypting text and return value.</msg>
+<msg timestamp="20250411 17:16:32.400" level="INFO">${password} = ***</msg>
+<status status="PASS" starttime="20250411 17:16:32.400" endtime="20250411 17:16:32.400"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${password}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:32.400" level="INFO">***</msg>
+<status status="PASS" starttime="20250411 17:16:32.400" endtime="20250411 17:16:32.400"/>
+</kw>
+<kw name="Open Connection" library="SSHLibrary">
+<var>${output}</var>
+<arg>${Host}</arg>
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<msg timestamp="20250411 17:16:32.401" level="INFO">${output} = 1</msg>
+<status status="PASS" starttime="20250411 17:16:32.400" endtime="20250411 17:16:32.401"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${output}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:32.401" level="INFO">1</msg>
+<status status="PASS" starttime="20250411 17:16:32.401" endtime="20250411 17:16:32.401"/>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<var>${Display}</var>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<arg>delay = 120</arg>
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<msg timestamp="20250411 17:16:32.401" level="INFO">Logging into 'nms-ixdub1-01.eu1.infra.asavie.net:22' as '***'.</msg>
+<msg timestamp="20250411 17:16:35.981" level="INFO">Read output: Linux nms-ixdub1-01 3.2.0-4-amd64 #1 SMP Debian 3.2.96-2 x86_64
+
+	nms-ixdub1-01/Network Management Server for IXDUB1
+
+Last login: Fri Apr 11 11:45:51 2025 from 10.81.3.246
+Cannot open display "default display"
+***@nms-ixdub1-01:~$</msg>
+<msg timestamp="20250411 17:16:35.981" level="INFO">${Display} = Linux nms-ixdub1-01 3.2.0-4-amd64 #1 SMP Debian 3.2.96-2 x86_64
+
+	nms-ixdub1-01/Network Management Server for IXDUB1
+
+Last login: Fri Apr 11 11:45:51 2025 from 10.81.3.246
+Cannot open display "d...</msg>
+<status status="PASS" starttime="20250411 17:16:32.401" endtime="20250411 17:16:35.982"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${Display}</arg>
+<arg>Last login</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250411 17:16:35.982" endtime="20250411 17:16:35.982"/>
+</kw>
+<status status="PASS" starttime="20250411 17:16:32.399" endtime="20250411 17:16:35.982"/>
+</kw>
+<kw name="Establish Connection AMB Server EU" library="Common">
+<kw name="Get Decrypted Text" library="CryptoLibrary">
+<var>${password}</var>
+<arg>${AMB_Lax_Password}</arg>
+<doc>Decrypts cipher text and returns the plain text.</doc>
+<msg timestamp="20250411 17:16:35.983" level="INFO">Decrypting text and return value.</msg>
+<msg timestamp="20250411 17:16:35.983" level="INFO">${password} = ***</msg>
+<status status="PASS" starttime="20250411 17:16:35.983" endtime="20250411 17:16:35.984"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${password}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:35.984" level="INFO">***</msg>
+<status status="PASS" starttime="20250411 17:16:35.984" endtime="20250411 17:16:35.984"/>
+</kw>
+<kw name="Open Connection" library="SSHLibrary">
+<var>${output}</var>
+<arg>${AMB_LAX01}</arg>
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<msg timestamp="20250411 17:16:35.984" level="INFO">${output} = 2</msg>
+<status status="PASS" starttime="20250411 17:16:35.984" endtime="20250411 17:16:35.984"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${output}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:35.985" level="INFO">2</msg>
+<status status="PASS" starttime="20250411 17:16:35.985" endtime="20250411 17:16:35.985"/>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<var>${Display}</var>
+<arg>${master_username}</arg>
+<arg>${password}</arg>
+<arg>delay = 120</arg>
+<arg>jumphost_index_or_alias=1</arg>
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<msg timestamp="20250411 17:16:35.985" level="INFO">index=1
+host=nms-ixdub1-01.eu1.infra.asavie.net
+alias=None
+port=22
+timeout=3 seconds
+newline=
+
+prompt=None
+term_type=vt100
+width=80
+height=24
+path_separator=/
+encoding=UTF-8
+escape_ansi=False
+encoding_errors=strict</msg>
+<msg timestamp="20250411 17:16:35.985" level="INFO">Logging into '172.24.21.40:22' as 'root'.</msg>
+<msg timestamp="20250411 17:16:39.945" level="INFO">Read output: Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 4.4.0-210-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+Welcome to Ubuntu 16.04 (Xenial Xerus)
+
+Hostname: AMB-LAX01-11
+
+Network configurations:
+
+nic: eth0 vlan: MGMT-SYS-LAX01
+nic: eth1 vlan: MGMT-VM-LAX01
+You have new mail.
+Last login: Fri Apr 11 11:45:55 2025 from 172.17.4.254
+root@AMB-LAX01-11:~#</msg>
+<msg timestamp="20250411 17:16:39.948" level="INFO">${Display} = Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 4.4.0-210-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu....</msg>
+<status status="PASS" starttime="20250411 17:16:35.985" endtime="20250411 17:16:39.948"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${Display}</arg>
+<arg>Last login</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250411 17:16:39.949" endtime="20250411 17:16:39.952"/>
+</kw>
+<status status="PASS" starttime="20250411 17:16:35.982" endtime="20250411 17:16:39.953"/>
+</kw>
+<status status="PASS" starttime="20250411 17:16:32.399" endtime="20250411 17:16:39.953"/>
+</kw>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${XEPA_master}</var>
+<arg>${ssh_command} ${password} ${ssh_o_command} ${username}@${ip} tail -10 /usr/local/var/log/xepa.log</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20250411 17:16:39.957" level="INFO">Executing command 'sshpass -p *** ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no -t root@172.24.40.28 tail -10 /usr/local/var/log/xepa.log'.</msg>
+<msg timestamp="20250411 17:16:41.613" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20250411 17:16:41.615" level="INFO">${XEPA_master} = Apr 11 11:46:36 XEPA-ATL01-01 XEPA: W3C: 172.30.255.1 11:46:36 0.00063 0 0 404 GET /fib_update #X-Xepa-Session: -1j2GNIWGUXaMrb6 (abr1.at3.naname.asavie.net/f1ba88e4f9a03df7)
+Apr 11 11:46:37 XEPA-ATL0...</msg>
+<status status="PASS" starttime="20250411 17:16:39.954" endtime="20250411 17:16:41.615"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${XEPA_master}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:41.617" level="INFO">Apr 11 11:46:36 XEPA-ATL01-01 XEPA: W3C: 172.30.255.1 11:46:36 0.00063 0 0 404 GET /fib_update #X-Xepa-Session: -1j2GNIWGUXaMrb6 (abr1.at3.naname.asavie.net/f1ba88e4f9a03df7)
+Apr 11 11:46:37 XEPA-ATL01-01 XEPA: W3C: 172.30.255.1 11:46:37 0.10486 228 0 201 POST /client #X-Xepa-Session: DJj5mGws8yTZcjim (abr2.at3.naname.asavie.net/efbbf52d720d986d)
+Apr 11 11:46:37 XEPA-ATL01-01 XEPA: W3C: 172.30.255.1 11:46:37 0.00079 0 0 404 GET /fib_update #X-Xepa-Session: DJj5mGws8yTZcjim (abr2.at3.naname.asavie.net/efbbf52d720d986d)
+Apr 11 11:46:37 XEPA-ATL01-01 XEPA: W3C: 172.30.142.11 11:46:37 0.00021 0 0 200 POST /xepa/session?broker=abr1.vz6.naname.asavie.net&amp;sgid=1f084c57a26af48a&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: kZz0bMXS3_Wijuzn
+Apr 11 11:46:38 XEPA-ATL01-01 XEPA: W3C: 172.30.142.14 11:46:38 0.00022 0 0 200 POST /xepa/session?broker=abr2.pt0.naname.asavie.net&amp;sgid=35ab9a6939e52c99&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: Z_3T9lS4uZVH4oF-
+Apr 11 11:46:38 XEPA-ATL01-01 XEPA: W3C: 172.30.142.9 11:46:38 0.00022 0 0 200 POST /xepa/session?broker=abr1.at3.naname.asavie.net&amp;sgid=f1ba88e4f9a03df7&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: -1j2GNIWGUXaMrb6
+Apr 11 11:46:38 XEPA-ATL01-01 XEPA: W3C: 172.30.142.13 11:46:38 0.00021 0 0 200 POST /xepa/session?broker=abr1.pt0.naname.asavie.net&amp;sgid=fc0ca7895a4c7a50&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: 1btwsWn5Bx7BhHjp
+Apr 11 11:46:39 XEPA-ATL01-01 XEPA: W3C: 172.30.255.1 11:46:39 0.00065 0 0 404 GET /fib_update #X-Xepa-Session: 1btwsWn5Bx7BhHjp (abr1.pt0.naname.asavie.net/fc0ca7895a4c7a50)
+Apr 11 11:46:40 XEPA-ATL01-01 XEPA: W3C: 172.30.142.10 11:46:40 0.00023 0 0 200 POST /xepa/session?broker=abr2.at3.naname.asavie.net&amp;sgid=efbbf52d720d986d&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: DJj5mGws8yTZcjim
+Apr 11 11:46:40 XEPA-ATL01-01 XEPA: W3C: 172.30.142.12 11:46:40 0.00022 0 0 200 POST /xepa/session?broker=abr2.vz6.naname.asavie.net&amp;sgid=e42e2980e481a5f8&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: BDMkuhCNLdZ3pjY0</msg>
+<status status="PASS" starttime="20250411 17:16:41.616" endtime="20250411 17:16:41.617"/>
+</kw>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${totalCount}</var>
+<arg>echo "${XEPA_master}" | grep keepalive | wc -l</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20250411 17:16:41.618" level="INFO">Executing command 'echo "Apr 11 11:46:36 XEPA-ATL01-01 XEPA: W3C: 172.30.255.1 11:46:36 0.00063 0 0 404 GET /fib_update #X-Xepa-Session: -1j2GNIWGUXaMrb6 (abr1.at3.naname.asavie.net/f1ba88e4f9a03df7)
+Apr 11 11:46:37 XEPA-ATL01-01 XEPA: W3C: 172.30.255.1 11:46:37 0.10486 228 0 201 POST /client #X-Xepa-Session: DJj5mGws8yTZcjim (abr2.at3.naname.asavie.net/efbbf52d720d986d)
+Apr 11 11:46:37 XEPA-ATL01-01 XEPA: W3C: 172.30.255.1 11:46:37 0.00079 0 0 404 GET /fib_update #X-Xepa-Session: DJj5mGws8yTZcjim (abr2.at3.naname.asavie.net/efbbf52d720d986d)
+Apr 11 11:46:37 XEPA-ATL01-01 XEPA: W3C: 172.30.142.11 11:46:37 0.00021 0 0 200 POST /xepa/session?broker=abr1.vz6.naname.asavie.net&amp;sgid=1f084c57a26af48a&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: kZz0bMXS3_Wijuzn
+Apr 11 11:46:38 XEPA-ATL01-01 XEPA: W3C: 172.30.142.14 11:46:38 0.00022 0 0 200 POST /xepa/session?broker=abr2.pt0.naname.asavie.net&amp;sgid=35ab9a6939e52c99&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: Z_3T9lS4uZVH4oF-
+Apr 11 11:46:38 XEPA-ATL01-01 XEPA: W3C: 172.30.142.9 11:46:38 0.00022 0 0 200 POST /xepa/session?broker=abr1.at3.naname.asavie.net&amp;sgid=f1ba88e4f9a03df7&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: -1j2GNIWGUXaMrb6
+Apr 11 11:46:38 XEPA-ATL01-01 XEPA: W3C: 172.30.142.13 11:46:38 0.00021 0 0 200 POST /xepa/session?broker=abr1.pt0.naname.asavie.net&amp;sgid=fc0ca7895a4c7a50&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: 1btwsWn5Bx7BhHjp
+Apr 11 11:46:39 XEPA-ATL01-01 XEPA: W3C: 172.30.255.1 11:46:39 0.00065 0 0 404 GET /fib_update #X-Xepa-Session: 1btwsWn5Bx7BhHjp (abr1.pt0.naname.asavie.net/fc0ca7895a4c7a50)
+Apr 11 11:46:40 XEPA-ATL01-01 XEPA: W3C: 172.30.142.10 11:46:40 0.00023 0 0 200 POST /xepa/session?broker=abr2.at3.naname.asavie.net&amp;sgid=efbbf52d720d986d&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: DJj5mGws8yTZcjim
+Apr 11 11:46:40 XEPA-ATL01-01 XEPA: W3C: 172.30.142.12 11:46:40 0.00022 0 0 200 POST /xepa/session?broker=abr2.vz6.naname.asavie.net&amp;sgid=e42e2980e481a5f8&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: BDMkuhCNLdZ3pjY0" | grep keepalive | wc -l'.</msg>
+<msg timestamp="20250411 17:16:42.349" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20250411 17:16:42.353" level="INFO">${totalCount} = 6</msg>
+<status status="PASS" starttime="20250411 17:16:41.618" endtime="20250411 17:16:42.353"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${totalCount}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:42.354" level="INFO">6</msg>
+<status status="PASS" starttime="20250411 17:16:42.354" endtime="20250411 17:16:42.354"/>
+</kw>
+<if>
+<branch type="IF" condition="${totalCount} &gt; 1">
+<kw name="Log" library="BuiltIn">
+<arg>xepa is Master</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:42.355" level="INFO">xepa is Master</msg>
+<status status="PASS" starttime="20250411 17:16:42.354" endtime="20250411 17:16:42.355"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>Check XEPA if running as Master or Backup</arg>
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<kw name="Check XEPA if running as Master or Backup" library="Health_Check">
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${XEPA_master}</var>
+<arg>${ssh_command} ${password} ${ssh_o_command} ${username}@${ip} tail -10 /usr/local/var/log/xepa.log</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20250411 17:16:42.357" level="INFO">Executing command 'sshpass -p *** ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no -t root@172.24.40.28 tail -10 /usr/local/var/log/xepa.log'.</msg>
+<msg timestamp="20250411 17:16:43.974" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20250411 17:16:43.975" level="INFO">${XEPA_master} = Apr 11 11:46:38 XEPA-ATL01-01 XEPA: W3C: 172.30.142.13 11:46:38 0.00021 0 0 200 POST /xepa/session?broker=abr1.pt0.naname.asavie.net&amp;sgid=fc0ca7895a4c7a50&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xe...</msg>
+<status status="PASS" starttime="20250411 17:16:42.356" endtime="20250411 17:16:43.976"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${XEPA_master}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:43.978" level="INFO">Apr 11 11:46:38 XEPA-ATL01-01 XEPA: W3C: 172.30.142.13 11:46:38 0.00021 0 0 200 POST /xepa/session?broker=abr1.pt0.naname.asavie.net&amp;sgid=fc0ca7895a4c7a50&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: 1btwsWn5Bx7BhHjp
+Apr 11 11:46:39 XEPA-ATL01-01 XEPA: W3C: 172.30.255.1 11:46:39 0.00065 0 0 404 GET /fib_update #X-Xepa-Session: 1btwsWn5Bx7BhHjp (abr1.pt0.naname.asavie.net/fc0ca7895a4c7a50)
+Apr 11 11:46:40 XEPA-ATL01-01 XEPA: W3C: 172.30.142.10 11:46:40 0.00023 0 0 200 POST /xepa/session?broker=abr2.at3.naname.asavie.net&amp;sgid=efbbf52d720d986d&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: DJj5mGws8yTZcjim
+Apr 11 11:46:40 XEPA-ATL01-01 XEPA: W3C: 172.30.142.12 11:46:40 0.00022 0 0 200 POST /xepa/session?broker=abr2.vz6.naname.asavie.net&amp;sgid=e42e2980e481a5f8&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: BDMkuhCNLdZ3pjY0
+Apr 11 11:46:42 XEPA-ATL01-01 XEPA: W3C: 172.30.255.1 11:46:42 0.00080 0 0 404 GET /fib_update #X-Xepa-Session: kZz0bMXS3_Wijuzn (abr1.vz6.naname.asavie.net/1f084c57a26af48a)
+Apr 11 11:46:42 XEPA-ATL01-01 XEPA: W3C: 172.30.142.11 11:46:42 0.00022 0 0 200 POST /xepa/session?broker=abr1.vz6.naname.asavie.net&amp;sgid=1f084c57a26af48a&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: kZz0bMXS3_Wijuzn
+Apr 11 11:46:42 XEPA-ATL01-01 XEPA: W3C: 172.30.255.1 11:46:42 0.10508 60 131 200 POST /client #X-Xepa-Session: DJj5mGws8yTZcjim (abr2.at3.naname.asavie.net/efbbf52d720d986d)
+Apr 11 11:46:43 XEPA-ATL01-01 XEPA: W3C: 172.30.142.14 11:46:43 0.00023 0 0 200 POST /xepa/session?broker=abr2.pt0.naname.asavie.net&amp;sgid=35ab9a6939e52c99&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: Z_3T9lS4uZVH4oF-
+Apr 11 11:46:43 XEPA-ATL01-01 XEPA: W3C: 172.30.142.9 11:46:43 0.00024 0 0 200 POST /xepa/session?broker=abr1.at3.naname.asavie.net&amp;sgid=f1ba88e4f9a03df7&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: -1j2GNIWGUXaMrb6
+Apr 11 11:46:43 XEPA-ATL01-01 XEPA: W3C: 172.30.142.13 11:46:43 0.00023 0 0 200 POST /xepa/session?broker=abr1.pt0.naname.asavie.net&amp;sgid=fc0ca7895a4c7a50&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: 1btwsWn5Bx7BhHjp</msg>
+<status status="PASS" starttime="20250411 17:16:43.977" endtime="20250411 17:16:43.978"/>
+</kw>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${totalCount}</var>
+<arg>echo "${XEPA_master}" | grep keepalive | wc -l</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20250411 17:16:43.978" level="INFO">Executing command 'echo "Apr 11 11:46:38 XEPA-ATL01-01 XEPA: W3C: 172.30.142.13 11:46:38 0.00021 0 0 200 POST /xepa/session?broker=abr1.pt0.naname.asavie.net&amp;sgid=fc0ca7895a4c7a50&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: 1btwsWn5Bx7BhHjp
+Apr 11 11:46:39 XEPA-ATL01-01 XEPA: W3C: 172.30.255.1 11:46:39 0.00065 0 0 404 GET /fib_update #X-Xepa-Session: 1btwsWn5Bx7BhHjp (abr1.pt0.naname.asavie.net/fc0ca7895a4c7a50)
+Apr 11 11:46:40 XEPA-ATL01-01 XEPA: W3C: 172.30.142.10 11:46:40 0.00023 0 0 200 POST /xepa/session?broker=abr2.at3.naname.asavie.net&amp;sgid=efbbf52d720d986d&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: DJj5mGws8yTZcjim
+Apr 11 11:46:40 XEPA-ATL01-01 XEPA: W3C: 172.30.142.12 11:46:40 0.00022 0 0 200 POST /xepa/session?broker=abr2.vz6.naname.asavie.net&amp;sgid=e42e2980e481a5f8&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: BDMkuhCNLdZ3pjY0
+Apr 11 11:46:42 XEPA-ATL01-01 XEPA: W3C: 172.30.255.1 11:46:42 0.00080 0 0 404 GET /fib_update #X-Xepa-Session: kZz0bMXS3_Wijuzn (abr1.vz6.naname.asavie.net/1f084c57a26af48a)
+Apr 11 11:46:42 XEPA-ATL01-01 XEPA: W3C: 172.30.142.11 11:46:42 0.00022 0 0 200 POST /xepa/session?broker=abr1.vz6.naname.asavie.net&amp;sgid=1f084c57a26af48a&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: kZz0bMXS3_Wijuzn
+Apr 11 11:46:42 XEPA-ATL01-01 XEPA: W3C: 172.30.255.1 11:46:42 0.10508 60 131 200 POST /client #X-Xepa-Session: DJj5mGws8yTZcjim (abr2.at3.naname.asavie.net/efbbf52d720d986d)
+Apr 11 11:46:43 XEPA-ATL01-01 XEPA: W3C: 172.30.142.14 11:46:43 0.00023 0 0 200 POST /xepa/session?broker=abr2.pt0.naname.asavie.net&amp;sgid=35ab9a6939e52c99&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: Z_3T9lS4uZVH4oF-
+Apr 11 11:46:43 XEPA-ATL01-01 XEPA: W3C: 172.30.142.9 11:46:43 0.00024 0 0 200 POST /xepa/session?broker=abr1.at3.naname.asavie.net&amp;sgid=f1ba88e4f9a03df7&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: -1j2GNIWGUXaMrb6
+Apr 11 11:46:43 XEPA-ATL01-01 XEPA: W3C: 172.30.142.13 11:46:43 0.00023 0 0 200 POST /xepa/session?broker=abr1.pt0.naname.asavie.net&amp;sgid=fc0ca7895a4c7a50&amp;period=5&amp;max_conn=12&amp;keepalive=25&amp;port=80 #Xepa-Session: 1btwsWn5Bx7BhHjp" | grep keepalive | wc -l'.</msg>
+<msg timestamp="20250411 17:16:44.712" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20250411 17:16:44.714" level="INFO">${totalCount} = 7</msg>
+<status status="PASS" starttime="20250411 17:16:43.978" endtime="20250411 17:16:44.714"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${totalCount}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:44.716" level="INFO">7</msg>
+<status status="PASS" starttime="20250411 17:16:44.715" endtime="20250411 17:16:44.716"/>
+</kw>
+<if>
+<branch type="IF" condition="${totalCount} &gt; 1">
+<kw name="Log" library="BuiltIn">
+<arg>xepa is Master</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:44.717" level="INFO">xepa is Master</msg>
+<status status="PASS" starttime="20250411 17:16:44.717" endtime="20250411 17:16:44.717"/>
+</kw>
+<status status="PASS" starttime="20250411 17:16:44.716" endtime="20250411 17:16:44.717"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" library="BuiltIn">
+<arg>xepa is slave</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:44.717" endtime="20250411 17:16:44.717"/>
+</kw>
+<status status="NOT RUN" starttime="20250411 17:16:44.717" endtime="20250411 17:16:44.717"/>
+</branch>
+<status status="PASS" starttime="20250411 17:16:44.716" endtime="20250411 17:16:44.718"/>
+</if>
+<status status="PASS" starttime="20250411 17:16:42.355" endtime="20250411 17:16:44.718"/>
+</kw>
+<status status="PASS" starttime="20250411 17:16:42.355" endtime="20250411 17:16:44.718"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>Check Core's reachablility from XEPA</arg>
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<kw name="Check Core's reachablility from XEPA" library="Health_Check">
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${XEPA_master_1}</var>
+<arg>${ssh_command} ${password} ${ssh_o_command} ${username}@${ip} "cat /etc/xepa.d/tpyd.sysconf | grep -v '#' | grep OrchSrvr.addr"</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20250411 17:16:44.723" level="INFO">Executing command 'sshpass -p *** ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no -t root@172.24.40.28 "cat /etc/xepa.d/tpyd.sysconf | grep -v '#' | grep OrchSrvr.addr"'.</msg>
+<msg timestamp="20250411 17:16:46.277" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20250411 17:16:46.277" level="INFO">${XEPA_master_1} = OrchSrvr.addr = 172.30.255.1</msg>
+<status status="PASS" starttime="20250411 17:16:44.722" endtime="20250411 17:16:46.277"/>
+</kw>
+<kw name="Should Match Regexp" library="BuiltIn">
+<var>${XEPA_master}</var>
+<arg>${XEPA_master_1}</arg>
+<arg>${IPregex}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<msg timestamp="20250411 17:16:46.278" level="INFO">${XEPA_master} = 172.30.255.1</msg>
+<status status="PASS" starttime="20250411 17:16:46.278" endtime="20250411 17:16:46.278"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${XEPA_master}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:46.279" level="INFO">172.30.255.1</msg>
+<status status="PASS" starttime="20250411 17:16:46.278" endtime="20250411 17:16:46.279"/>
+</kw>
+<if>
+<branch type="IF" condition="&quot;${XEPA_master}&quot; == &quot;${IP_of_Core}&quot;">
+<kw name="Log" library="BuiltIn">
+<arg>Server is pointing to Core</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:46.280" level="INFO">Server is pointing to Core</msg>
+<status status="PASS" starttime="20250411 17:16:46.279" endtime="20250411 17:16:46.280"/>
+</kw>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${resp}</var>
+<arg>${ssh_command} ${password} ${ssh_o_command} ${username}@${ip} "ping -c 2 -I eth1 ${IP_of_Core}"</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20250411 17:16:46.281" level="INFO">Executing command 'sshpass -p *** ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no -t root@172.24.40.28 "ping -c 2 -I eth1 172.30.255.1"'.</msg>
+<msg timestamp="20250411 17:16:48.884" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20250411 17:16:48.884" level="INFO">${resp} = PING 172.30.255.1 (172.30.255.1) from 172.30.142.24 eth1: 56(84) bytes of data.
+64 bytes from 172.30.255.1: icmp_seq=1 ttl=122 time=104 ms
+64 bytes from 172.30.255.1: icmp_seq=1 ttl=122 time=104 ms (D...</msg>
+<status status="PASS" starttime="20250411 17:16:46.280" endtime="20250411 17:16:48.885"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${Destination_Host_Unreachable}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250411 17:16:48.885" endtime="20250411 17:16:48.886"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${Something_is_wrong}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250411 17:16:48.886" endtime="20250411 17:16:48.886"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${64byts}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250411 17:16:48.886" endtime="20250411 17:16:48.886"/>
+</kw>
+<status status="PASS" starttime="20250411 17:16:46.279" endtime="20250411 17:16:48.887"/>
+</branch>
+<branch type="ELSE IF" condition="&quot;${XEPA_master}&quot; == &quot;${IP_of_PortableNW_zz0}&quot;">
+<kw name="Log" library="BuiltIn">
+<arg>Server is pointing to Portable Network</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:48.887" endtime="20250411 17:16:48.887"/>
+</kw>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${resp}</var>
+<arg>${ssh_command} ${password} ${ssh_o_command} ${username}@${ip} "ping -c 2 -I eth1 ${IP_of_PortableNW_zz0}"</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:48.887" endtime="20250411 17:16:48.887"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${Destination_Host_Unreachable}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:48.888" endtime="20250411 17:16:48.888"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${Something_is_wrong}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:48.888" endtime="20250411 17:16:48.888"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${64byts}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:48.888" endtime="20250411 17:16:48.888"/>
+</kw>
+<status status="NOT RUN" starttime="20250411 17:16:48.887" endtime="20250411 17:16:48.888"/>
+</branch>
+<branch type="ELSE IF" condition="&quot;${XEPA_master}&quot; == &quot;${IP_of_staging_Core}&quot;">
+<kw name="Log" library="BuiltIn">
+<arg>Server is pointing to Portable Network</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:48.888" endtime="20250411 17:16:48.888"/>
+</kw>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${resp}</var>
+<arg>${ssh_command} ${password} ${ssh_o_command} ${username}@${ip} "ping -c 2 -I eth1 ${IP_of_staging_Core}"</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:48.888" endtime="20250411 17:16:48.889"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${Destination_Host_Unreachable}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:48.889" endtime="20250411 17:16:48.889"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${Something_is_wrong}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:48.889" endtime="20250411 17:16:48.889"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${64byts}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:48.889" endtime="20250411 17:16:48.889"/>
+</kw>
+<status status="NOT RUN" starttime="20250411 17:16:48.888" endtime="20250411 17:16:48.889"/>
+</branch>
+<branch type="ELSE IF" condition="&quot;${XEPA_master}&quot; == &quot;${IP_of_Core_Singapore}&quot;">
+<kw name="Log" library="BuiltIn">
+<arg>Server is pointing to core of singapore</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:48.889" endtime="20250411 17:16:48.889"/>
+</kw>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${resp}</var>
+<arg>${ssh_command} ${password} ${ssh_o_command} ${username}@${ip} "ping -c 2 -I eth1 ${IP_of_Core_Singapore}"</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:48.890" endtime="20250411 17:16:48.890"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${Destination_Host_Unreachable}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:48.890" endtime="20250411 17:16:48.890"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${Something_is_wrong}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:48.890" endtime="20250411 17:16:48.890"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${64byts}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:48.890" endtime="20250411 17:16:48.890"/>
+</kw>
+<status status="NOT RUN" starttime="20250411 17:16:48.889" endtime="20250411 17:16:48.890"/>
+</branch>
+<branch type="ELSE">
+<kw name="Fail" library="BuiltIn">
+<arg>log</arg>
+<arg>Something is wrong, instead of Core or Emulator the response returned is ${XEPA_master}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:48.890" endtime="20250411 17:16:48.890"/>
+</kw>
+<status status="NOT RUN" starttime="20250411 17:16:48.890" endtime="20250411 17:16:48.890"/>
+</branch>
+<status status="PASS" starttime="20250411 17:16:46.279" endtime="20250411 17:16:48.890"/>
+</if>
+<status status="PASS" starttime="20250411 17:16:44.720" endtime="20250411 17:16:48.891"/>
+</kw>
+<status status="PASS" starttime="20250411 17:16:44.719" endtime="20250411 17:16:48.891"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>Check whether pointing to Core</arg>
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<kw name="Check whether pointing to Core" library="Health_Check">
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${XEPA_master}</var>
+<arg>${ssh_command} ${password} ${ssh_o_command} ${username}@${ip} grep ^OrchSrvr.addr /etc/xepa.d/tpyd.sysconf | cut -f3 -d " "</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20250411 17:16:48.893" level="INFO">Executing command 'sshpass -p *** ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no -t root@172.24.40.28 grep ^OrchSrvr.addr /etc/xepa.d/tpyd.sysconf | cut -f3 -d " "'.</msg>
+<msg timestamp="20250411 17:16:50.437" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20250411 17:16:50.438" level="INFO">${XEPA_master} = 172.30.255.1</msg>
+<status status="PASS" starttime="20250411 17:16:48.892" endtime="20250411 17:16:50.438"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${XEPA_master}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:50.439" level="INFO">172.30.255.1</msg>
+<status status="PASS" starttime="20250411 17:16:50.438" endtime="20250411 17:16:50.439"/>
+</kw>
+<if>
+<branch type="IF" condition="&quot;${XEPA_master}&quot; == &quot;${empty}&quot;">
+<kw name="Fail" library="BuiltIn">
+<arg>log</arg>
+<arg>Core IP is missing from tpyd.conf</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:50.444" endtime="20250411 17:16:50.445"/>
+</kw>
+<status status="NOT RUN" starttime="20250411 17:16:50.444" endtime="20250411 17:16:50.445"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" library="BuiltIn">
+<arg>Core IP is there in tpyd.conf</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:50.446" level="INFO">Core IP is there in tpyd.conf</msg>
+<status status="PASS" starttime="20250411 17:16:50.445" endtime="20250411 17:16:50.446"/>
+</kw>
+<status status="PASS" starttime="20250411 17:16:50.445" endtime="20250411 17:16:50.446"/>
+</branch>
+<status status="PASS" starttime="20250411 17:16:50.439" endtime="20250411 17:16:50.450"/>
+</if>
+<status status="PASS" starttime="20250411 17:16:48.891" endtime="20250411 17:16:50.451"/>
+</kw>
+<status status="PASS" starttime="20250411 17:16:48.891" endtime="20250411 17:16:50.451"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>Check Gateway Ip from XEPA</arg>
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<kw name="Check Gateway Ip from XEPA" library="Health_Check">
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${XEPA_gateway}</var>
+<arg>${ssh_command} ${password} ${ssh_o_command} ${username}@${ip} grep 172.30.255 /etc/sysconfig/network-scripts/route-eth1 | awk '{ print $3 }'</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20250411 17:16:50.453" level="INFO">Executing command 'sshpass -p *** ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no -t root@172.24.40.28 grep 172.30.255 /etc/sysconfig/network-scripts/route-eth1 | awk '{ print $3 }''.</msg>
+<msg timestamp="20250411 17:16:52.057" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20250411 17:16:52.057" level="INFO">${XEPA_gateway} = 172.30.142.1</msg>
+<status status="PASS" starttime="20250411 17:16:50.453" endtime="20250411 17:16:52.058"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${XEPA_gateway}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:52.059" level="INFO">172.30.142.1</msg>
+<status status="PASS" starttime="20250411 17:16:52.058" endtime="20250411 17:16:52.059"/>
+</kw>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${resp}</var>
+<arg>${ssh_command} ${password} ${ssh_o_command} ${username}@${ip} ping -c 2 -I eth1 "${XEPA_gateway}"</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20250411 17:16:52.061" level="INFO">Executing command 'sshpass -p *** ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no -t root@172.24.40.28 ping -c 2 -I eth1 "172.30.142.1"'.</msg>
+<msg timestamp="20250411 17:16:54.607" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20250411 17:16:54.607" level="INFO">${resp} = PING 172.30.142.1 (172.30.142.1) from 172.30.142.24 eth1: 56(84) bytes of data.
+64 bytes from 172.30.142.1: icmp_seq=1 ttl=64 time=11.4 ms
+64 bytes from 172.30.142.1: icmp_seq=2 ttl=64 time=18.7 ms
+
+-...</msg>
+<status status="PASS" starttime="20250411 17:16:52.060" endtime="20250411 17:16:54.607"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${resp}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:54.608" level="INFO">PING 172.30.142.1 (172.30.142.1) from 172.30.142.24 eth1: 56(84) bytes of data.
+64 bytes from 172.30.142.1: icmp_seq=1 ttl=64 time=11.4 ms
+64 bytes from 172.30.142.1: icmp_seq=2 ttl=64 time=18.7 ms
+
+--- 172.30.142.1 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1009ms
+rtt min/avg/max/mdev = 11.495/15.140/18.785/3.645 ms</msg>
+<status status="PASS" starttime="20250411 17:16:54.608" endtime="20250411 17:16:54.609"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${Destination_Host_Unreachable}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250411 17:16:54.609" endtime="20250411 17:16:54.610"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${Something_is_wrong}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250411 17:16:54.611" endtime="20250411 17:16:54.615"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${64byts}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250411 17:16:54.615" endtime="20250411 17:16:54.615"/>
+</kw>
+<status status="PASS" starttime="20250411 17:16:50.451" endtime="20250411 17:16:54.616"/>
+</kw>
+<status status="PASS" starttime="20250411 17:16:50.451" endtime="20250411 17:16:54.616"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>Check TCP connectivity to Core from XEPA</arg>
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<kw name="Check TCP connectivity to Core from XEPA" library="Health_Check">
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${XEPA_tcp}</var>
+<arg>${ssh_command} ${password} ${ssh_o_command} ${username}@${ip} netstat -a | grep http</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20250411 17:16:54.618" level="INFO">Executing command 'sshpass -p *** ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no -t root@172.24.40.28 netstat -a | grep http'.</msg>
+<msg timestamp="20250411 17:16:56.366" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20250411 17:16:56.366" level="INFO">${XEPA_tcp} = tcp        0      0 *:http                  *:*                     LISTEN      
+tcp        0      0 172.30.142.24:http      172.30.255.1:53113      ESTABLISHED 
+tcp        0      0 172.30.142.24:5297...</msg>
+<status status="PASS" starttime="20250411 17:16:54.617" endtime="20250411 17:16:56.366"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${XEPA_tcp}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:56.367" level="INFO">tcp        0      0 *:http                  *:*                     LISTEN      
+tcp        0      0 172.30.142.24:http      172.30.255.1:53113      ESTABLISHED 
+tcp        0      0 172.30.142.24:52971     172.30.142.12:http      ESTABLISHED 
+tcp        0      0 172.30.142.24:53330     172.30.142.10:http      ESTABLISHED 
+tcp        0      0 172.30.142.24:53336     172.30.142.14:http      ESTABLISHED 
+tcp        0      0 172.30.142.24:53337     172.30.142.14:http      TIME_WAIT   
+tcp        0      0 172.30.142.24:51891     172.30.142.11:http      ESTABLISHED 
+tcp        0      0 172.30.142.24:53332     172.30.142.9:http       ESTABLISHED 
+tcp        0      0 172.30.142.24:53326     172.30.142.13:http      ESTABLISHED </msg>
+<status status="PASS" starttime="20250411 17:16:56.366" endtime="20250411 17:16:56.367"/>
+</kw>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${totalCount}</var>
+<arg>echo "${XEPA_tcp}" | grep 172.30.255 | grep ESTABLISHED | wc -l</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20250411 17:16:56.367" level="INFO">Executing command 'echo "tcp        0      0 *:http                  *:*                     LISTEN      
+tcp        0      0 172.30.142.24:http      172.30.255.1:53113      ESTABLISHED 
+tcp        0      0 172.30.142.24:52971     172.30.142.12:http      ESTABLISHED 
+tcp        0      0 172.30.142.24:53330     172.30.142.10:http      ESTABLISHED 
+tcp        0      0 172.30.142.24:53336     172.30.142.14:http      ESTABLISHED 
+tcp        0      0 172.30.142.24:53337     172.30.142.14:http      TIME_WAIT   
+tcp        0      0 172.30.142.24:51891     172.30.142.11:http      ESTABLISHED 
+tcp        0      0 172.30.142.24:53332     172.30.142.9:http       ESTABLISHED 
+tcp        0      0 172.30.142.24:53326     172.30.142.13:http      ESTABLISHED " | grep 172.30.255 | grep ESTABLISHED | wc -l'.</msg>
+<msg timestamp="20250411 17:16:57.095" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20250411 17:16:57.096" level="INFO">${totalCount} = 1</msg>
+<status status="PASS" starttime="20250411 17:16:56.367" endtime="20250411 17:16:57.097"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${totalCount}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:57.098" level="INFO">1</msg>
+<status status="PASS" starttime="20250411 17:16:57.097" endtime="20250411 17:16:57.098"/>
+</kw>
+<if>
+<branch type="IF" condition="${totalCount} &lt; 1">
+<kw name="Fail" library="BuiltIn">
+<arg>log</arg>
+<arg>TCP:Connection to Core/CEMU is down</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:57.099" endtime="20250411 17:16:57.099"/>
+</kw>
+<status status="NOT RUN" starttime="20250411 17:16:57.099" endtime="20250411 17:16:57.101"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" library="BuiltIn">
+<arg>TCP:Connection to Core/CEMU is established</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:57.101" level="INFO">TCP:Connection to Core/CEMU is established</msg>
+<status status="PASS" starttime="20250411 17:16:57.101" endtime="20250411 17:16:57.102"/>
+</kw>
+<status status="PASS" starttime="20250411 17:16:57.101" endtime="20250411 17:16:57.102"/>
+</branch>
+<status status="PASS" starttime="20250411 17:16:57.098" endtime="20250411 17:16:57.102"/>
+</if>
+<status status="PASS" starttime="20250411 17:16:54.616" endtime="20250411 17:16:57.102"/>
+</kw>
+<status status="PASS" starttime="20250411 17:16:54.616" endtime="20250411 17:16:57.102"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>Check TCP connectivity to ABR from XEPA</arg>
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<kw name="Check TCP connectivity to ABR from XEPA" library="Health_Check">
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${XEPA_tcp}</var>
+<arg>${ssh_command} ${password} ${ssh_o_command} ${username}@${ip} netstat -a | grep http</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20250411 17:16:57.104" level="INFO">Executing command 'sshpass -p *** ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no -t root@172.24.40.28 netstat -a | grep http'.</msg>
+<msg timestamp="20250411 17:16:58.715" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20250411 17:16:58.715" level="INFO">${XEPA_tcp} = tcp        0      0 *:http                  *:*                     LISTEN      
+tcp        0      0 172.30.142.24:http      172.30.255.1:53113      ESTABLISHED 
+tcp        0      0 172.30.142.24:5297...</msg>
+<status status="PASS" starttime="20250411 17:16:57.103" endtime="20250411 17:16:58.715"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${XEPA_tcp}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:58.716" level="INFO">tcp        0      0 *:http                  *:*                     LISTEN      
+tcp        0      0 172.30.142.24:http      172.30.255.1:53113      ESTABLISHED 
+tcp        0      0 172.30.142.24:52971     172.30.142.12:http      ESTABLISHED 
+tcp        0      0 172.30.142.24:53330     172.30.142.10:http      ESTABLISHED 
+tcp        0      0 172.30.142.24:53336     172.30.142.14:http      ESTABLISHED 
+tcp        0      0 172.30.142.24:53337     172.30.142.14:http      TIME_WAIT   
+tcp        0      0 172.30.142.24:http      172.30.255.1:65246      ESTABLISHED 
+tcp        0      0 172.30.142.24:51891     172.30.142.11:http      ESTABLISHED 
+tcp        0      0 172.30.142.24:53332     172.30.142.9:http       ESTABLISHED 
+tcp        0      0 172.30.142.24:53326     172.30.142.13:http      ESTABLISHED </msg>
+<status status="PASS" starttime="20250411 17:16:58.716" endtime="20250411 17:16:58.716"/>
+</kw>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${totalCount}</var>
+<arg>echo "${XEPA_tcp}" | grep ESTABLISHED | awk '{ print $5 }' | grep -v 172.30.255.2 | wc -l</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20250411 17:16:58.716" level="INFO">Executing command 'echo "tcp        0      0 *:http                  *:*                     LISTEN      
+tcp        0      0 172.30.142.24:http      172.30.255.1:53113      ESTABLISHED 
+tcp        0      0 172.30.142.24:52971     172.30.142.12:http      ESTABLISHED 
+tcp        0      0 172.30.142.24:53330     172.30.142.10:http      ESTABLISHED 
+tcp        0      0 172.30.142.24:53336     172.30.142.14:http      ESTABLISHED 
+tcp        0      0 172.30.142.24:53337     172.30.142.14:http      TIME_WAIT   
+tcp        0      0 172.30.142.24:http      172.30.255.1:65246      ESTABLISHED 
+tcp        0      0 172.30.142.24:51891     172.30.142.11:http      ESTABLISHED 
+tcp        0      0 172.30.142.24:53332     172.30.142.9:http       ESTABLISHED 
+tcp        0      0 172.30.142.24:53326     172.30.142.13:http      ESTABLISHED " | grep ESTABLISHED | awk '{ print $5 }' | grep -v 172.30.255.2 | wc -l'.</msg>
+<msg timestamp="20250411 17:16:59.445" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20250411 17:16:59.446" level="INFO">${totalCount} = 8</msg>
+<status status="PASS" starttime="20250411 17:16:58.716" endtime="20250411 17:16:59.446"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${totalCount}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:59.448" level="INFO">8</msg>
+<status status="PASS" starttime="20250411 17:16:59.447" endtime="20250411 17:16:59.449"/>
+</kw>
+<if>
+<branch type="IF" condition="${totalCount} &lt; 1">
+<kw name="Fail" library="BuiltIn">
+<arg>log</arg>
+<arg>TCP:Connection to ABRs is down</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" starttime="20250411 17:16:59.450" endtime="20250411 17:16:59.450"/>
+</kw>
+<status status="NOT RUN" starttime="20250411 17:16:59.449" endtime="20250411 17:16:59.450"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" library="BuiltIn">
+<arg>TCP:Total ABRs with established status are ${totalCount}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:16:59.451" level="INFO">TCP:Total ABRs with established status are 8</msg>
+<status status="PASS" starttime="20250411 17:16:59.451" endtime="20250411 17:16:59.451"/>
+</kw>
+<status status="PASS" starttime="20250411 17:16:59.450" endtime="20250411 17:16:59.451"/>
+</branch>
+<status status="PASS" starttime="20250411 17:16:59.449" endtime="20250411 17:16:59.451"/>
+</if>
+<status status="PASS" starttime="20250411 17:16:57.102" endtime="20250411 17:16:59.452"/>
+</kw>
+<status status="PASS" starttime="20250411 17:16:57.102" endtime="20250411 17:16:59.452"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>Check Nanames from XEPA and connectivity with each of the ABRs</arg>
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<arg>${ABR-IP}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<kw name="Check Nanames from XEPA and connectivity with each of the ABRs" library="Health_Check">
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<arg>${ABR-IP}</arg>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${XEPA_Nanames}</var>
+<arg>${ssh_command} ${password} ${ssh_o_command} ${username}@${ABR-IP} grep naname /etc/hosts | awk '{ print $3 }' | cut -d'.' -f2</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20250411 17:16:59.453" level="INFO">Executing command 'sshpass -p *** ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no -t root@172.24.40.17 grep naname /etc/hosts | awk '{ print $3 }' | cut -d'.' -f2'.</msg>
+<msg timestamp="20250411 17:17:01.278" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20250411 17:17:01.279" level="INFO">${XEPA_Nanames} = at3</msg>
+<status status="PASS" starttime="20250411 17:16:59.453" endtime="20250411 17:17:01.280"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${XEPA_Nanames}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:17:01.281" level="INFO">at3</msg>
+<status status="PASS" starttime="20250411 17:17:01.280" endtime="20250411 17:17:01.281"/>
+</kw>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${XEPA_namesoutput}</var>
+<arg>${ssh_command} ${password} ${ssh_o_command} ${username}@${ABR-IP} grep naname /etc/hosts | awk '{ print $3 }' | awk -F'[ .]' '{ print $1"."$2 }'</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20250411 17:17:01.282" level="INFO">Executing command 'sshpass -p *** ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no -t root@172.24.40.17 grep naname /etc/hosts | awk '{ print $3 }' | awk -F'[ .]' '{ print $1"."$2 }''.</msg>
+<msg timestamp="20250411 17:17:03.062" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20250411 17:17:03.063" level="INFO">${XEPA_namesoutput} = abr2.at3</msg>
+<status status="PASS" starttime="20250411 17:17:01.281" endtime="20250411 17:17:03.063"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${XEPA_namesoutput}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:17:03.064" level="INFO">abr2.at3</msg>
+<status status="PASS" starttime="20250411 17:17:03.063" endtime="20250411 17:17:03.064"/>
+</kw>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${XEPA_keepalive}</var>
+<arg>${ssh_command} ${password} ${ssh_o_command} ${username}@${ip} "tac xepa.log | awk '/keepalive/ &amp;&amp; /${XEPA_namesoutput}/{print \\\$3; exit}'"</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20250411 17:17:03.065" level="INFO">Executing command 'sshpass -p *** ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no -t root@172.24.40.28 "tac xepa.log | awk '/keepalive/ &amp;&amp; /abr2.at3/{print \$3; exit}'"'.</msg>
+<msg timestamp="20250411 17:17:04.573" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20250411 17:17:04.573" level="INFO">${XEPA_keepalive} = 11:47:00</msg>
+<status status="PASS" starttime="20250411 17:17:03.064" endtime="20250411 17:17:04.574"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${XEPA_keepalive}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:17:04.574" level="INFO">11:47:00</msg>
+<status status="PASS" starttime="20250411 17:17:04.574" endtime="20250411 17:17:04.574"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>10s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20250411 17:17:14.576" level="INFO">Slept 10 seconds</msg>
+<status status="PASS" starttime="20250411 17:17:04.574" endtime="20250411 17:17:14.577"/>
+</kw>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${XEPA_keepalive1}</var>
+<arg>${ssh_command} ${password} ${ssh_o_command} ${username}@${ip} "tac xepa.log | awk '/keepalive/ &amp;&amp; /${XEPA_namesoutput}/{print \\\$3; exit}'"</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20250411 17:17:14.578" level="INFO">Executing command 'sshpass -p *** ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no -t root@172.24.40.28 "tac xepa.log | awk '/keepalive/ &amp;&amp; /abr2.at3/{print \$3; exit}'"'.</msg>
+<msg timestamp="20250411 17:17:16.109" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20250411 17:17:16.110" level="INFO">${XEPA_keepalive1} = 11:47:15</msg>
+<status status="PASS" starttime="20250411 17:17:14.577" endtime="20250411 17:17:16.110"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${XEPA_keepalive1}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:17:16.112" level="INFO">11:47:15</msg>
+<status status="PASS" starttime="20250411 17:17:16.112" endtime="20250411 17:17:16.113"/>
+</kw>
+<if>
+<branch type="IF" condition="&quot;${XEPA_keepalive}&quot; &lt; &quot;${XEPA_keepalive1}&quot;">
+<kw name="Log" library="BuiltIn">
+<arg>Xepa is connected to "${XEPA_namesoutput}"</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:17:16.114" level="INFO">Xepa is connected to "abr2.at3"</msg>
+<status status="PASS" starttime="20250411 17:17:16.113" endtime="20250411 17:17:16.114"/>
+</kw>
+<status status="PASS" starttime="20250411 17:17:16.113" endtime="20250411 17:17:16.114"/>
+</branch>
+<branch type="ELSE">
+<kw name="Fail" library="BuiltIn">
+<arg>log</arg>
+<arg>Xepa connectivity is lost with" "${XEPA_namesoutput}"</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" starttime="20250411 17:17:16.114" endtime="20250411 17:17:16.114"/>
+</kw>
+<status status="NOT RUN" starttime="20250411 17:17:16.114" endtime="20250411 17:17:16.114"/>
+</branch>
+<status status="PASS" starttime="20250411 17:17:16.113" endtime="20250411 17:17:16.114"/>
+</if>
+<status status="PASS" starttime="20250411 17:16:59.452" endtime="20250411 17:17:16.114"/>
+</kw>
+<status status="PASS" starttime="20250411 17:16:59.452" endtime="20250411 17:17:16.114"/>
+</kw>
+<status status="PASS" starttime="20250411 17:16:42.354" endtime="20250411 17:17:16.114"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" library="BuiltIn">
+<arg>xepa is slave</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20250411 17:17:16.115" endtime="20250411 17:17:16.115"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>Check XEPA if running as Master or Backup</arg>
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="NOT RUN" starttime="20250411 17:17:16.115" endtime="20250411 17:17:16.115"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>Check Core's reachablility from XEPA</arg>
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="NOT RUN" starttime="20250411 17:17:16.115" endtime="20250411 17:17:16.115"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>Check whether pointing to Core</arg>
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="NOT RUN" starttime="20250411 17:17:16.115" endtime="20250411 17:17:16.115"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>Check Gateway Ip from XEPA</arg>
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="NOT RUN" starttime="20250411 17:17:16.115" endtime="20250411 17:17:16.115"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>Check TCP connectivity to Core from XEPA</arg>
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="NOT RUN" starttime="20250411 17:17:16.115" endtime="20250411 17:17:16.116"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>Check TCP connectivity to ABR from XEPA</arg>
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="NOT RUN" starttime="20250411 17:17:16.116" endtime="20250411 17:17:16.116"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>Check Nanames from XEPA and connectivity with each of the ABRs</arg>
+<arg>${ip}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<arg>${ABR-IP}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="NOT RUN" starttime="20250411 17:17:16.116" endtime="20250411 17:17:16.116"/>
+</kw>
+<status status="NOT RUN" starttime="20250411 17:17:16.114" endtime="20250411 17:17:16.116"/>
+</branch>
+<status status="PASS" starttime="20250411 17:16:42.354" endtime="20250411 17:17:16.116"/>
+</if>
+<kw name="Close All Connections" library="SSHLibrary">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20250411 17:17:16.116" endtime="20250411 17:17:16.117"/>
+</kw>
+<status status="PASS" starttime="20250411 17:16:32.398" endtime="20250411 17:17:16.117"/>
+</kw>
+<msg timestamp="20250411 17:17:16.117" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20250411 17:16:32.398" endtime="20250411 17:17:16.117"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${status}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:17:16.118" level="INFO">True</msg>
+<status status="PASS" starttime="20250411 17:17:16.118" endtime="20250411 17:17:16.118"/>
+</kw>
+<status status="PASS" starttime="20250411 17:16:32.398" endtime="20250411 17:17:16.118"/>
+</iter>
+<status status="PASS" starttime="20250411 17:15:46.916" endtime="20250411 17:17:16.118"/>
+</for>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>Run keyword if</arg>
+<arg>${status} == ${False}</arg>
+<arg>fail</arg>
+<arg>XEPA services report is not fine. Please Check 'Check All XEPA Services' Keywords for Detailed Investigation</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status} == ${False}</arg>
+<arg>fail</arg>
+<arg>XEPA services report is not fine. Please Check 'Check All XEPA Services' Keywords for Detailed Investigation</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20250411 17:17:16.119" endtime="20250411 17:17:16.119"/>
+</kw>
+<status status="PASS" starttime="20250411 17:17:16.118" endtime="20250411 17:17:16.119"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${passed}</var>
+<arg>${status} == ${True}</arg>
+<arg>${True}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20250411 17:17:16.119" level="INFO">${passed} = True</msg>
+<status status="PASS" starttime="20250411 17:17:16.119" endtime="20250411 17:17:16.119"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${passed}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:17:16.120" level="INFO">True</msg>
+<status status="PASS" starttime="20250411 17:17:16.120" endtime="20250411 17:17:16.120"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${failed}</var>
+<arg>${status} == ${False}</arg>
+<arg>${False}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20250411 17:17:16.120" level="INFO">${failed} = None</msg>
+<status status="PASS" starttime="20250411 17:17:16.120" endtime="20250411 17:17:16.120"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${failed}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:17:16.120" level="INFO">None</msg>
+<status status="PASS" starttime="20250411 17:17:16.120" endtime="20250411 17:17:16.121"/>
+</kw>
+<if>
+<branch type="IF" condition="${failed} == ${False}">
+<kw name="Evaluate" library="BuiltIn">
+<var>${fail}</var>
+<arg>${fail} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" starttime="20250411 17:17:16.121" endtime="20250411 17:17:16.121"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${fail}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20250411 17:17:16.121" endtime="20250411 17:17:16.121"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${Failed_XEPAs}</arg>
+<arg>${key1}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="NOT RUN" starttime="20250411 17:17:16.121" endtime="20250411 17:17:16.121"/>
+</kw>
+<status status="NOT RUN" starttime="20250411 17:17:16.121" endtime="20250411 17:17:16.121"/>
+</branch>
+<branch type="ELSE IF" condition="${passed}">
+<kw name="Evaluate" library="BuiltIn">
+<var>${pass}</var>
+<arg>${pass} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20250411 17:17:16.122" level="INFO">${pass} = 1</msg>
+<status status="PASS" starttime="20250411 17:17:16.121" endtime="20250411 17:17:16.122"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${pass}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:17:16.122" level="INFO">1</msg>
+<status status="PASS" starttime="20250411 17:17:16.122" endtime="20250411 17:17:16.122"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${Passed_XEPAs}</arg>
+<arg>${key1}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20250411 17:17:16.122" endtime="20250411 17:17:16.122"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${key} is successfully Checked.</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:17:16.123" level="INFO">ABR-ATL01-02 is successfully Checked.</msg>
+<status status="PASS" starttime="20250411 17:17:16.123" endtime="20250411 17:17:16.123"/>
+</kw>
+<status status="PASS" starttime="20250411 17:17:16.121" endtime="20250411 17:17:16.123"/>
+</branch>
+<status status="PASS" starttime="20250411 17:17:16.121" endtime="20250411 17:17:16.123"/>
+</if>
+<status status="PASS" starttime="20250411 17:15:46.916" endtime="20250411 17:17:16.123"/>
+</iter>
+<status status="PASS" starttime="20250411 17:15:46.916" endtime="20250411 17:17:16.123"/>
+</for>
+<kw name="Log Many" library="BuiltIn">
+<arg>Passed XEPA: ${Passed_XEPAs}</arg>
+<arg>Passed XEPAs Count: ${pass}</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<msg timestamp="20250411 17:17:16.123" level="INFO">Passed XEPA: ['XEPA-ATL01-01']</msg>
+<msg timestamp="20250411 17:17:16.123" level="INFO">Passed XEPAs Count: 1</msg>
+<status status="PASS" starttime="20250411 17:17:16.123" endtime="20250411 17:17:16.123"/>
+</kw>
+<if>
+<branch type="IF" condition="${fail} == ${check_status}">
+<kw name="Log" library="BuiltIn">
+<arg>All XEPA's are passing.There is no Failure</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250411 17:17:16.124" level="INFO">All XEPA's are passing.There is no Failure</msg>
+<status status="PASS" starttime="20250411 17:17:16.124" endtime="20250411 17:17:16.124"/>
+</kw>
+<status status="PASS" starttime="20250411 17:17:16.124" endtime="20250411 17:17:16.124"/>
+</branch>
+<branch type="ELSE">
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>Fail</arg>
+<arg>Failed XEPA's</arg>
+<arg>Log Many</arg>
+<arg>Failed XEPAs: ${Failed_XEPAs}</arg>
+<arg>Failed XEPAs Count: ${fail}</arg>
+<arg>Please Check XEPA Services in logs for ${Failed_XEPAs}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="NOT RUN" starttime="20250411 17:17:16.124" endtime="20250411 17:17:16.124"/>
+</kw>
+<status status="NOT RUN" starttime="20250411 17:17:16.124" endtime="20250411 17:17:16.124"/>
+</branch>
+<status status="PASS" starttime="20250411 17:17:16.123" endtime="20250411 17:17:16.124"/>
+</if>
+<status status="PASS" starttime="20250411 17:15:46.902" endtime="20250411 17:17:16.124"/>
+</kw>
+<doc>- ATL Health Check Script Component- XEPA</doc>
+<status status="PASS" starttime="20250411 17:15:46.901" endtime="20250411 17:17:16.125"/>
+</test>
+<status status="PASS" starttime="20250411 17:15:46.069" endtime="20250411 17:17:16.126"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="ATL Logging">ATL Logging</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

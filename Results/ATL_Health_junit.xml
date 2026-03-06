@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ATL Logging" tests="9" errors="0" failures="0" skipped="0" time="1104.980" timestamp="2025-01-16T01:10:00.277000">
+<testcase classname="ATL Logging" name="DCR Services Check for ATL" time="31.222">
+</testcase>
+<testcase classname="ATL Logging" name="ABR Services Check for ATL" time="120.741">
+</testcase>
+<testcase classname="ATL Logging" name="XEPA Services Check for ATL" time="314.464">
+</testcase>
+<testcase classname="ATL Logging" name="CIBR Services Check for ATL" time="43.683">
+</testcase>
+<testcase classname="ATL Logging" name="RSX Services Check for ATL" time="363.910">
+</testcase>
+<testcase classname="ATL Logging" name="COL Services Check for ATL" time="31.915">
+</testcase>
+<testcase classname="ATL Logging" name="AAA Services Check for ATL" time="61.603">
+</testcase>
+<testcase classname="ATL Logging" name="PROD-PRX Services Check for ATL" time="17.769">
+</testcase>
+<testcase classname="ATL Logging" name="VPNAT Services Check for ATL" time="119.178">
+</testcase>
+</testsuite>
